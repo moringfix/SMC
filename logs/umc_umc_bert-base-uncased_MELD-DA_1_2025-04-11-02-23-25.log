@@ -1,0 +1,112 @@
+2025-04-11 02:23:25,016 - ============================== Params ==============================
+2025-04-11 02:23:25,017 - logger_name: umc_umc_bert-base-uncased_MELD-DA_1
+2025-04-11 02:23:25,017 - dataset: MELD-DA
+2025-04-11 02:23:25,017 - multimodal_method: umc
+2025-04-11 02:23:25,017 - method: umc
+2025-04-11 02:23:25,017 - text_backbone: bert-base-uncased
+2025-04-11 02:23:25,017 - seed: 1
+2025-04-11 02:23:25,017 - num_workers: 16
+2025-04-11 02:23:25,017 - log_id: umc_umc_bert-base-uncased_MELD-DA_1_2025-04-11-02-23-25
+2025-04-11 02:23:25,017 - gpu_id: 0
+2025-04-11 02:23:25,017 - data_path: /root/autodl-tmp/home/Share/Dataset/LZH
+2025-04-11 02:23:25,017 - train: True
+2025-04-11 02:23:25,017 - tune: True
+2025-04-11 02:23:25,017 - save_model: True
+2025-04-11 02:23:25,017 - save_results: True
+2025-04-11 02:23:25,017 - log_path: logs
+2025-04-11 02:23:25,017 - cache_path: cache
+2025-04-11 02:23:25,017 - video_data_path: video_data
+2025-04-11 02:23:25,017 - audio_data_path: audio_data
+2025-04-11 02:23:25,017 - video_feats_path: swin_feats.pkl
+2025-04-11 02:23:25,017 - audio_feats_path: wavlm_feats.pkl
+2025-04-11 02:23:25,017 - results_path: results
+2025-04-11 02:23:25,017 - output_path: /root/autodl-tmp/home/lizhuohang/reaserch/EMNLP/UMC/outputs/MELD-DA
+2025-04-11 02:23:25,017 - model_path: models
+2025-04-11 02:23:25,017 - config_file_name: umc_MELD-DA
+2025-04-11 02:23:25,017 - results_file_name: results_umc.csv
+2025-04-11 02:23:25,018 - text_pretrained_model: uncased_L-12_H-768_A-12
+2025-04-11 02:23:25,018 - text_seq_len: 70
+2025-04-11 02:23:25,018 - video_seq_len: 250
+2025-04-11 02:23:25,018 - audio_seq_len: 520
+2025-04-11 02:23:25,018 - text_feat_dim: 768
+2025-04-11 02:23:25,018 - video_feat_dim: 1024
+2025-04-11 02:23:25,018 - audio_feat_dim: 768
+2025-04-11 02:23:25,018 - num_labels: 12
+2025-04-11 02:23:25,018 - num_train_examples: 7990
+2025-04-11 02:23:25,018 - pretrained_bert_model: uncased_L-12_H-768_A-12
+2025-04-11 02:23:25,018 - pretrain_batch_size: 128
+2025-04-11 02:23:25,018 - train_batch_size: 128
+2025-04-11 02:23:25,018 - eval_batch_size: 128
+2025-04-11 02:23:25,018 - test_batch_size: 128
+2025-04-11 02:23:25,018 - num_pretrain_epochs: [100]
+2025-04-11 02:23:25,018 - num_train_epochs: [100]
+2025-04-11 02:23:25,018 - pretrain: [True]
+2025-04-11 02:23:25,018 - aligned_method: ctc
+2025-04-11 02:23:25,018 - need_aligned: False
+2025-04-11 02:23:25,018 - freeze_pretrain_bert_parameters: True
+2025-04-11 02:23:25,018 - freeze_train_bert_parameters: True
+2025-04-11 02:23:25,018 - pretrain_temperature: [0.2]
+2025-04-11 02:23:25,018 - train_temperature_sup: [20]
+2025-04-11 02:23:25,018 - train_temperature_unsup: [20]
+2025-04-11 02:23:25,018 - activation: tanh
+2025-04-11 02:23:25,018 - lr_pre: [2e-05]
+2025-04-11 02:23:25,018 - lr: [0.0002]
+2025-04-11 02:23:25,018 - delta: [0.05]
+2025-04-11 02:23:25,018 - thres: [0.1]
+2025-04-11 02:23:25,018 - topk: [5]
+2025-04-11 02:23:25,019 - weight_decay: 0.01
+2025-04-11 02:23:25,019 - feat_dim: 768
+2025-04-11 02:23:25,019 - hidden_size: 768
+2025-04-11 02:23:25,019 - grad_clip: [-1.0]
+2025-04-11 02:23:25,019 - warmup_proportion: 0.1
+2025-04-11 02:23:25,019 - hidden_dropout_prob: 0.1
+2025-04-11 02:23:25,019 - weight: 1.0
+2025-04-11 02:23:25,019 - loss_mode: rdrop
+2025-04-11 02:23:25,019 - base_dim: [256]
+2025-04-11 02:23:25,019 - nheads: 8
+2025-04-11 02:23:25,019 - attn_dropout: 0.1
+2025-04-11 02:23:25,019 - relu_dropout: 0.1
+2025-04-11 02:23:25,019 - embed_dropout: 0.1
+2025-04-11 02:23:25,019 - res_dropout: 0.0
+2025-04-11 02:23:25,019 - attn_mask: True
+2025-04-11 02:23:25,019 - encoder_layers_1: 1
+2025-04-11 02:23:25,019 - fusion_act: tanh
+2025-04-11 02:23:25,020 - pred_output_path: /root/autodl-tmp/home/lizhuohang/reaserch/EMNLP/UMC/outputs/MELD-DA/umc_umc_MELD-DA_bert-base-uncased_1
+2025-04-11 02:23:25,020 - model_output_path: /root/autodl-tmp/home/lizhuohang/reaserch/EMNLP/UMC/outputs/MELD-DA/umc_umc_MELD-DA_bert-base-uncased_1/models
+2025-04-11 02:23:25,020 - ============================== End Params ==============================
+2025-04-11 02:23:26,333 - Freeze all parameters but the last layer for efficiency
+2025-04-11 02:23:26,371 - Pre-training start...
+2025-04-11 02:24:55,838 - ***** Epoch: 1: Eval results *****
+2025-04-11 02:24:55,840 -   train_loss = 5.91670042370993
+2025-04-11 02:26:28,486 - ***** Epoch: 2: Eval results *****
+2025-04-11 02:26:28,487 -   train_loss = 5.8908337032984175
+2025-04-11 02:28:02,609 - ***** Epoch: 3: Eval results *****
+2025-04-11 02:28:02,609 -   train_loss = 5.718720935639881
+2025-04-11 02:29:35,083 - ***** Epoch: 4: Eval results *****
+2025-04-11 02:29:35,083 -   train_loss = 5.129162167745923
+2025-04-11 02:31:07,778 - ***** Epoch: 5: Eval results *****
+2025-04-11 02:31:07,778 -   train_loss = 4.353102324500917
+2025-04-11 02:32:41,010 - ***** Epoch: 6: Eval results *****
+2025-04-11 02:32:41,010 -   train_loss = 3.7784986231062145
+2025-04-11 02:34:14,317 - ***** Epoch: 7: Eval results *****
+2025-04-11 02:34:14,318 -   train_loss = 3.47309054268731
+2025-04-11 02:35:47,002 - ***** Epoch: 8: Eval results *****
+2025-04-11 02:35:47,003 -   train_loss = 3.2648502834259516
+2025-04-11 02:37:20,778 - ***** Epoch: 9: Eval results *****
+2025-04-11 02:37:20,779 -   train_loss = 3.1101815284244596
+2025-04-11 02:38:54,107 - ***** Epoch: 10: Eval results *****
+2025-04-11 02:38:54,108 -   train_loss = 2.999358775123717
+2025-04-11 02:40:26,604 - ***** Epoch: 11: Eval results *****
+2025-04-11 02:40:26,604 -   train_loss = 2.9217674164544967
+2025-04-11 02:41:59,509 - ***** Epoch: 12: Eval results *****
+2025-04-11 02:41:59,509 -   train_loss = 2.8569066865103587
+2025-04-11 02:43:32,626 - ***** Epoch: 13: Eval results *****
+2025-04-11 02:43:32,627 -   train_loss = 2.8001045537373375
+2025-04-11 02:45:04,710 - ***** Epoch: 14: Eval results *****
+2025-04-11 02:45:04,712 -   train_loss = 2.7500270056346108
+2025-04-11 02:46:36,867 - ***** Epoch: 15: Eval results *****
+2025-04-11 02:46:36,867 -   train_loss = 2.7104471070425853
+2025-04-11 02:48:11,692 - ***** Epoch: 16: Eval results *****
+2025-04-11 02:48:11,693 -   train_loss = 2.6811176197869435
+2025-04-11 02:49:46,176 - ***** Epoch: 17: Eval results *****
+2025-04-11 02:49:46,176 -   train_loss = 2.6492049712983388
