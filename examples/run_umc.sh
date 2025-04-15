@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 # for seed in 0 1 2 3 4
-for seed in  0 1 2 3 4
+for seed in  0 #  1 2 3 4
 
 do
     for multimodal_method in 'umc'
@@ -16,6 +16,7 @@ do
                     --dataset $dataset \
                     --data_path '/root/autodl-tmp/home/Share/Dataset/LZH' \
                     --logger_name $method \
+                    --setting 'unsupervised'\
                     --multimodal_method $multimodal_method \
                     --method $method\
                     --train \
@@ -29,7 +30,7 @@ do
                     --text_backbone $text_backbone \
                     --config_file_name ${method}_${dataset} \
                     --results_file_name "results_umc.csv" \
-                    --output_path "/root/autodl-tmp/home/lizhuohang/reaserch/EMNLP/SMC/outputs/${dataset}"
+                    --output_path "/root/autodl-tmp/home/lizhuohang/reaserch/EMNLP/SMC/outputs_test/${dataset}"
                 done
             done
         done

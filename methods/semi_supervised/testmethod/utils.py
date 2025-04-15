@@ -4,7 +4,9 @@ from torch.utils.data import DataLoader, RandomSampler, SequentialSampler
 from data.mm_pre import MMDataset
 import numpy as np
 import torch.nn.functional as F
-from transformers import AdamW, get_linear_schedule_with_warmup
+# from transformers import AdamW, get_linear_schedule_with_warmup
+from torch.optim import AdamW
+from transformers.optimization import get_linear_schedule_with_warmup
 
 def get_pseudo_dataloader(args, train_outputs, mode='pretrain', pseudo_labels=None):
     
@@ -124,7 +126,8 @@ def set_optimizer(args, model, lr, mode='train'):
         {'params': [p for n, p in param_optimizer if any(nd in n for nd in no_decay)], 'weight_decay': 0.0}
     ]
 
-    optimizer = AdamW(optimizer_grouped_parameters, lr = lr, correct_bias=False)
+    # optimizer = AdamW(optimizer_grouped_parameters, lr = lr, correct_bias=False)
+    optimizer = AdamW(optimizer_grouped_parameters, lr = lr)
 
     num_train_optimization_steps = int(args.num_train_examples / args.train_batch_size) * num_train_epochs
     num_warmup_steps = int(args.num_train_examples * num_train_epochs * args.warmup_proportion / args.train_batch_size)

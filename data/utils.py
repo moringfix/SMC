@@ -14,29 +14,54 @@ def get_dataloader(args, data):
         'test': test_dataloader
     }  
 
-def get_v_a_data(data_args, feats_path, max_seq_len):
+# def get_v_a_data(data_args, feats_path, max_seq_len):
+    
+#     if not os.path.exists(feats_path):
+#         raise Exception(f'Error: The directory of features is empty.: {feats_path}')    
+
+#     feats = load_feats(data_args, feats_path)
+#     data = padding_feats(feats, max_seq_len)
+    
+#     return data 
+    
+# def load_feats(data_args, video_feats_path):
+
+#     with open(video_feats_path, 'rb') as f:
+#         video_feats = pickle.load(f)
+
+#     train_feats = [video_feats[x] for x in data_args['train_data_index']]
+#     test_feats = [video_feats[x] for x in data_args['test_data_index']]
+#     outputs = {
+#         'train': train_feats,
+#         'test': test_feats
+#     }
+
+    # return outputs
+####################### <<START>> lzh:Semi-Supervised part ####################### 
+
+def get_v_a_data(args ,examples, feats_path, max_seq_len):
     
     if not os.path.exists(feats_path):
-        raise Exception(f'Error: The directory of features is empty.: {feats_path}')    
+        raise Exception('Error: The directory of features is empty.')    
 
-    feats = load_feats(data_args, feats_path)
+    feats = load_feats(args, examples, feats_path)
     data = padding_feats(feats, max_seq_len)
     
     return data 
     
-def load_feats(data_args, video_feats_path):
-
+def load_feats(args ,examples, video_feats_path):
+    # NOTE 由于已经提前分配的训练和测试（通过examples），所以不许呀哦分配train和test和dev
     with open(video_feats_path, 'rb') as f:
         video_feats = pickle.load(f)
 
-    train_feats = [video_feats[x] for x in data_args['train_data_index']]
-    test_feats = [video_feats[x] for x in data_args['test_data_index']]
-    outputs = {
-        'train': train_feats,
-        'test': test_feats
-    }
+    feats = [video_feats[example.index] for example in examples]
 
-    return outputs
+    return feats
+
+####################### <<END>> lzh:Semi-Supervised part ####################### 
+
+
+
 
 def padding(feat, max_length, padding_mode = 'zero', padding_loc = 'end'):
     """

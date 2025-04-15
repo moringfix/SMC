@@ -3,38 +3,49 @@ import csv
 import sys
 from transformers import BertTokenizer, RobertaTokenizer
 
-def get_t_data(args, data_args):
+# def get_t_data(args, data_args):
+    
+#     if args.text_backbone.startswith('bert'):
+#         t_data = get_data(args, data_args)
+#     else:
+#         raise Exception('Error: inputs are not supported text backbones.')
+
+#     return t_data
+
+# def get_data(args, data_args):
+
+#     processor = DatasetProcessor(args)
+#     data_path = data_args['data_path']
+
+#     train_examples = processor.get_examples(data_path, 'train') 
+#     dev_examples = processor.get_examples(data_path, 'dev')
+
+#     train_examples = train_examples + dev_examples
+
+#     train_feats = get_backbone_feats(args, data_args, train_examples)
+
+    
+#     test_examples = processor.get_examples(data_path, 'test')
+#     test_feats = get_backbone_feats(args, data_args, test_examples)
+
+    
+#     outputs = {
+#         'train': train_feats,
+#         'test': test_feats
+#     }
+        
+#     return outputs
+
+def get_t_data(args, examples):
     
     if args.text_backbone.startswith('bert'):
-        t_data = get_data(args, data_args)
+        t_data = get_backbone_feats(args, examples)
     else:
         raise Exception('Error: inputs are not supported text backbones.')
 
     return t_data
 
-def get_data(args, data_args):
 
-    processor = DatasetProcessor(args)
-    data_path = data_args['data_path']
-
-    train_examples = processor.get_examples(data_path, 'train') 
-    dev_examples = processor.get_examples(data_path, 'dev')
-
-    train_examples = train_examples + dev_examples
-
-    train_feats = get_backbone_feats(args, data_args, train_examples)
-
-    
-    test_examples = processor.get_examples(data_path, 'test')
-    test_feats = get_backbone_feats(args, data_args, test_examples)
-
-    
-    outputs = {
-        'train': train_feats,
-        'test': test_feats
-    }
-        
-    return outputs
 
 def get_backbone_feats(args, data_args, examples):
     
@@ -46,22 +57,6 @@ def get_backbone_feats(args, data_args, examples):
 
     return features_list
 
-class InputExample(object):
-    """A single training/test example for simple sequence classification."""
-
-    def __init__(self, guid, text_a, text_b=None):
-        """Constructs a InputExample.
-        Args:
-            guid: Unique id for the example.
-            text_a: string. The untokenized text of the first sequence. For single
-            sequence tasks, only this sequence must be specified.
-            text_b: (Optional) string. The untokenized text of the second sequence.
-            Only must be specified for sequence pair tasks.
-            specified for train and dev examples, but not for test examples.
-        """
-        self.guid = guid
-        self.text_a = text_a
-        self.text_b = text_b
 
 class InputFeatures(object):
     """A single set of features of data."""
@@ -71,65 +66,6 @@ class InputFeatures(object):
         self.input_mask = input_mask
         self.segment_ids = segment_ids
 
-class DataProcessor(object):
-    """Base class for data converters for sequence classification data sets."""
-
-    @classmethod
-    def _read_tsv(cls, input_file, quotechar=None):
-        """Reads a tab separated value file."""
-        with open(input_file, "r") as f:
-            reader = csv.reader(f, delimiter="\t", quotechar=quotechar)
-            lines = []
-            for line in reader:
-                if sys.version_info[0] == 2:
-                    line = list(unicode(cell, 'utf-8') for cell in line)
-                lines.append(line)
-            return lines
-
-class DatasetProcessor(DataProcessor):
-
-    def __init__(self, args):
-        super(DatasetProcessor).__init__()
-        
-        if args.dataset in ['MIntRec']:
-            self.select_id = 3
-        elif args.dataset in ['clinc', 'clinc-small', 'snips', 'atis']:
-            self.select_id = 0
-        elif args.dataset in ['L-MIntRec']:
-            self.select_id = 5
-        elif args.dataset in ['MELD-DA']:
-            self.select_id = 2
-        elif args.dataset in ['IEMOCAP-DA']:
-            self.select_id = 1
-        
-    def get_examples(self, data_dir, mode):
-        
-        if mode == 'train':
-            return self._create_examples(
-                self._read_tsv(os.path.join(data_dir, "train.tsv")), "train")
-        elif mode == 'dev':
-            return self._create_examples(
-                self._read_tsv(os.path.join(data_dir, "dev.tsv")), "train")
-        elif mode == 'test':
-            return self._create_examples(
-                self._read_tsv(os.path.join(data_dir, "test.tsv")), "test")
-        elif mode == 'all':
-            return self._create_examples(
-                self._read_tsv(os.path.join(data_dir, "all.tsv")), "all")
-
-    def _create_examples(self, lines, set_type):
-        """Creates examples for the training and dev sets."""
-        examples = []
-        for (i, line) in enumerate(lines):
-            if i == 0:
-                continue
-
-            guid = "%s-%s" % (set_type, i)
-            text_a = line[self.select_id]
-
-            examples.append(
-                InputExample(guid=guid, text_a=text_a, text_b=None))
-        return examples
 
 def convert_examples_to_features(examples, max_seq_length, tokenizer):
     """Loads a data file into a list of `InputBatch`s."""

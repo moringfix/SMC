@@ -1,8 +1,10 @@
 import os
+import sys
 import logging
 import csv
 import copy
 import random
+import numpy as np
 from .mm_pre import MMDataset
 from .text_pre import get_t_data
 from .utils import get_v_a_data
@@ -21,7 +23,7 @@ class DataManager:
         max_seq_lengths, feat_dims = bm['max_seq_lengths'], bm['feat_dims']
         args.text_seq_len, args.video_seq_len, args.audio_seq_len = max_seq_lengths['text'], max_seq_lengths['video'], max_seq_lengths['audio']
         args.text_feat_dim, args.video_feat_dim, args.audio_feat_dim = feat_dims['text'], feat_dims['video'], feat_dims['audio']
-        self.mm_data, self.train_outputs = get_data(args, self.logger) 
+        # self.mm_data, self.train_outputs = get_data(args, self.logger)  # NOTE 注释掉防止重复
 
         ####################### <<START>> lzh:Semi-Supervised part ####################### 
         self.all_label_list = copy.deepcopy(bm["labels"])
@@ -31,8 +33,6 @@ class DataManager:
             'all_label_list' : self.all_label_list
         }
         
-
-
         if args.setting == 'semi_supervised':
             
             args.n_known_cls = self.n_known_cls = round(len(self.all_label_list) * args.known_cls_ratio)
@@ -47,8 +47,7 @@ class DataManager:
 
             self.train_examples = get_examples(args, base_attrs, 'train')
             self.eval_examples = get_examples(args, base_attrs, 'dev')
-            # print('111111111',self.train_examples)
-            # print('222222222',self.eval_examples)
+
 
             self.train_examples = self.train_examples + self.eval_examples
             # args.num_train_examples = len(self.train_examples)
@@ -79,57 +78,48 @@ class DataManager:
         args.num_train_examples = len(self.train_examples)
         ####################### <<END>> lzh:Semi-Supervised part ####################### 
 
-
-def get_data(args, logger):
+        
+####################### <<START>> lzh:Semi-Supervised part ####################### 
+  
+def get_data(examples, args, label_list, logger, mode):
     
     data_path = os.path.join(args.data_path, args.dataset)
-    bm = benchmarks[args.dataset]
-    
-    label_list = copy.deepcopy(bm["labels"])
-    logger.info('Lists of intent labels are: %s', str(label_list))  
-      
-    args.num_labels = len(label_list)  
     
     logger.info('data preparation...')
     
-    train_data_index, train_label_ids = get_indexes_annotations(args, bm, label_list, os.path.join(data_path, 'train.tsv'))
-    dev_data_index, dev_label_ids = get_indexes_annotations(args, bm, label_list, os.path.join(data_path, 'dev.tsv'))
-    
-    train_data_index = train_data_index + dev_data_index
-    train_label_ids = train_label_ids + dev_label_ids
-
-    test_data_index, test_label_ids = get_indexes_annotations(args, bm, label_list, os.path.join(data_path, 'test.tsv'))
-    args.num_train_examples = len(train_data_index)
-    
-    data_args = {
-        'data_path': data_path,
-        'train_data_index': train_data_index,
-        'test_data_index': test_data_index,
-    }
+    label_ids = get_ids_annotations(args, examples,label_list,mode)
         
-    text_data = get_t_data(args, data_args)
+    text_data = get_t_data(args, examples)
         
-    video_feats_path = os.path.join(data_args['data_path'], args.video_data_path, args.video_feats_path)
-    video_data = get_v_a_data(data_args, video_feats_path, args.video_seq_len)
+    video_feats_path = os.path.join(data_path, args.video_data_path, args.video_feats_path)
+    video_data = get_v_a_data(args, examples, video_feats_path, args.video_seq_len)
     
-    audio_feats_path = os.path.join(data_args['data_path'], args.audio_data_path, args.audio_feats_path)
-    print('###################### Audio feats path:' ,audio_feats_path)
-    audio_data = get_v_a_data(data_args, audio_feats_path, args.audio_seq_len)
+    audio_feats_path = os.path.join(data_path, args.audio_data_path, args.audio_feats_path)
+    audio_data = get_v_a_data(args, examples, audio_feats_path, args.audio_seq_len)
     
-    mm_train_data = MMDataset(train_label_ids, text_data['train'], video_data['train'], audio_data['train'])
-    mm_test_data = MMDataset(test_label_ids, text_data['test'], video_data['test'], audio_data['test'])
+    mm_data = MMDataset(label_ids, text_data, video_data, audio_data)
 
-    mm_data = {'train': mm_train_data, 'test': mm_test_data}
-    
-    train_outputs = {
-        'text': text_data['train'],
-        'video': video_data['train'],
-        'audio': audio_data['train'],
-        'label_ids': train_label_ids,
-    }
-    
-    return mm_data, train_outputs
-                 
+    if mode in ['train','train_labeled','train_unlabeled']:
+        dataloader = DataLoader(mm_data, shuffle=False, batch_size = args.train_batch_size, num_workers = args.num_workers, pin_memory = True)
+    if mode == 'test':
+        dataloader = DataLoader(mm_data, batch_size = args.test_batch_size, num_workers = args.num_workers, pin_memory = True)
+    if mode == 'dev':
+        dataloader = DataLoader(mm_data, batch_size = args.eval_batch_size, num_workers = args.num_workers, pin_memory = True)
+
+    if mode == 'train':
+        train_out = {
+            'text': text_data,
+            'video': video_data,
+            'audio': audio_data,
+            'label_ids': label_ids,
+        }
+        
+        return dataloader, train_out
+    elif mode in ['train_labeled','train_unlabeled']:
+        return dataloader,mm_data
+    else:
+        return dataloader
+####################### <<END>> lzh:Semi-Supervised part ####################### 
 
 ####################### <<START>> lzh:Semi-Supervised part ####################### 
 def get_semi_data(labeled_examples, unlabeled_examples, train_labeled_mmdata,train_unlabeled_mmdata,base_attrs,args):
@@ -201,7 +191,7 @@ def get_examples(args, base_attrs, mode):
 
 def get_ids_annotations(args, examples,label_list,mode):
 
-    if mode == 'train_unlabeled':
+    if mode == 'train_unlabeled':   # NOTE 这里是mask掉
         label_ids = [-1] * len(examples)
 
     else:
@@ -217,49 +207,6 @@ def get_ids_annotations(args, examples,label_list,mode):
     return label_ids
 
 ####################### <<END>> lzh:Semi-Supervised part ####################### 
-
-
-
-
-
-
-def get_indexes_annotations(args, bm, label_list, read_file_path):
-
-    label_map = {}
-    for i, label in enumerate(label_list):
-        label_map[label] = i
-
-    with open(read_file_path, 'r') as f:
-
-        data = csv.reader(f, delimiter="\t")
-        indexes = []
-        label_ids = []
-
-        for i, line in enumerate(data):
-            if i == 0:
-                continue
-            
-            if args.dataset in ['MIntRec']:
-                index = '_'.join([line[0], line[1], line[2]])
-                indexes.append(index)
-                
-                label_id = label_map[line[4]]
-            
-            elif args.dataset in ['MELD-DA']:
-                label_id = label_map[line[3]]
-                
-                index = '_'.join([line[0], line[1]])
-                indexes.append(index)
-            
-            elif args.dataset in ['IEMOCAP-DA']:
-                label_id = label_map[line[2]]
-                index = line[0]
-                indexes.append(index)
-            
-            label_ids.append(label_id)
-    
-    return indexes, label_ids
-
 
 
 ####################### <<START>> lzh:Semi-Supervised part ####################### 
