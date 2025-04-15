@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 # for seed in 0 1 2 3 4
-for seed in  0 #  1 2 3 4
+for seed in  0 # 0 1 2 3 4
 
 do
     for multimodal_method in 'umc'

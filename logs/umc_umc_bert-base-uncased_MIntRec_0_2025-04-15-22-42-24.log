@@ -1,0 +1,101 @@
+2025-04-15 22:42:24,577 - 进入了无监督的设定中, 加载数据集
+2025-04-15 22:42:24,582 - data preparation...
+2025-04-15 22:42:35,250 - Number of train samples = 1779
+2025-04-15 22:42:35,252 - Number of testing samples = 445
+2025-04-15 22:42:35,253 - data preparation...
+2025-04-15 22:42:38,385 - ============================== Params ==============================
+2025-04-15 22:42:38,385 - logger_name: umc_umc_bert-base-uncased_MIntRec_0
+2025-04-15 22:42:38,385 - dataset: MIntRec
+2025-04-15 22:42:38,385 - multimodal_method: umc
+2025-04-15 22:42:38,385 - method: umc
+2025-04-15 22:42:38,386 - setting: unsupervised
+2025-04-15 22:42:38,386 - text_backbone: bert-base-uncased
+2025-04-15 22:42:38,386 - seed: 0
+2025-04-15 22:42:38,386 - num_workers: 16
+2025-04-15 22:42:38,386 - log_id: umc_umc_bert-base-uncased_MIntRec_0_2025-04-15-22-42-24
+2025-04-15 22:42:38,386 - gpu_id: 0
+2025-04-15 22:42:38,386 - data_path: /root/autodl-tmp/home/Share/Dataset/LZH
+2025-04-15 22:42:38,386 - train: True
+2025-04-15 22:42:38,386 - tune: True
+2025-04-15 22:42:38,386 - save_model: True
+2025-04-15 22:42:38,386 - save_results: True
+2025-04-15 22:42:38,386 - log_path: logs
+2025-04-15 22:42:38,386 - cache_path: cache
+2025-04-15 22:42:38,386 - video_data_path: video_data
+2025-04-15 22:42:38,386 - audio_data_path: audio_data
+2025-04-15 22:42:38,386 - video_feats_path: swin_feats.pkl
+2025-04-15 22:42:38,386 - audio_feats_path: wavlm_feats.pkl
+2025-04-15 22:42:38,386 - results_path: results
+2025-04-15 22:42:38,386 - output_path: /root/autodl-tmp/home/lizhuohang/reaserch/EMNLP/SMC/outputs_test/MIntRec
+2025-04-15 22:42:38,386 - model_path: models
+2025-04-15 22:42:38,386 - config_file_name: umc_MIntRec
+2025-04-15 22:42:38,386 - results_file_name: results_umc.csv
+2025-04-15 22:42:38,386 - text_pretrained_model: uncased_L-12_H-768_A-12
+2025-04-15 22:42:38,386 - pretrained_bert_model: uncased_L-12_H-768_A-12
+2025-04-15 22:42:38,386 - pretrain_batch_size: 128
+2025-04-15 22:42:38,386 - train_batch_size: 128
+2025-04-15 22:42:38,386 - eval_batch_size: 128
+2025-04-15 22:42:38,386 - test_batch_size: 128
+2025-04-15 22:42:38,386 - num_pretrain_epochs: 100
+2025-04-15 22:42:38,387 - num_train_epochs: 100
+2025-04-15 22:42:38,387 - pretrain: [True]
+2025-04-15 22:42:38,387 - aligned_method: ctc
+2025-04-15 22:42:38,387 - need_aligned: False
+2025-04-15 22:42:38,387 - freeze_pretrain_bert_parameters: [True]
+2025-04-15 22:42:38,387 - freeze_train_bert_parameters: [True]
+2025-04-15 22:42:38,387 - pretrain_temperature: [0.1]
+2025-04-15 22:42:38,387 - train_temperature_sup: [0.5, 1, 2, 4, 6, 8]
+2025-04-15 22:42:38,387 - train_temperature_unsup: [0.5, 1, 2, 4, 6, 8]
+2025-04-15 22:42:38,387 - activation: tanh
+2025-04-15 22:42:38,387 - lr_pre: 1e-05
+2025-04-15 22:42:38,387 - lr: [0.0001]
+2025-04-15 22:42:38,387 - delta: [0.05]
+2025-04-15 22:42:38,387 - thres: [0.1]
+2025-04-15 22:42:38,387 - topk: [5]
+2025-04-15 22:42:38,387 - weight_decay: 0.01
+2025-04-15 22:42:38,387 - feat_dim: 768
+2025-04-15 22:42:38,387 - hidden_size: 768
+2025-04-15 22:42:38,388 - grad_clip: -1.0
+2025-04-15 22:42:38,388 - warmup_proportion: 0.5
+2025-04-15 22:42:38,388 - hidden_dropout_prob: 0.1
+2025-04-15 22:42:38,388 - weight: 1.0
+2025-04-15 22:42:38,388 - loss_mode: rdrop
+2025-04-15 22:42:38,388 - base_dim: 256
+2025-04-15 22:42:38,388 - nheads: 8
+2025-04-15 22:42:38,388 - attn_dropout: 0.1
+2025-04-15 22:42:38,388 - relu_dropout: 0.1
+2025-04-15 22:42:38,388 - embed_dropout: 0.01
+2025-04-15 22:42:38,388 - res_dropout: 0.0
+2025-04-15 22:42:38,388 - attn_mask: True
+2025-04-15 22:42:38,388 - encoder_layers_1: 1
+2025-04-15 22:42:38,388 - fusion_act: tanh
+2025-04-15 22:42:38,388 - pred_output_path: /root/autodl-tmp/home/lizhuohang/reaserch/EMNLP/SMC/outputs_test/MIntRec/umc_umc_MIntRec_bert-base-uncased_0
+2025-04-15 22:42:38,388 - model_output_path: /root/autodl-tmp/home/lizhuohang/reaserch/EMNLP/SMC/outputs_test/MIntRec/umc_umc_MIntRec_bert-base-uncased_0/models
+2025-04-15 22:42:38,388 - text_seq_len: 30
+2025-04-15 22:42:38,388 - video_seq_len: 230
+2025-04-15 22:42:38,388 - audio_seq_len: 480
+2025-04-15 22:42:38,388 - text_feat_dim: 768
+2025-04-15 22:42:38,388 - video_feat_dim: 1024
+2025-04-15 22:42:38,388 - audio_feat_dim: 768
+2025-04-15 22:42:38,388 - num_train_examples: 1779
+2025-04-15 22:42:38,388 - ============================== End Params ==============================
+2025-04-15 22:42:39,913 - Freeze all parameters but the last layer for efficiency
+2025-04-15 22:42:39,953 - Pre-training start...
+2025-04-15 22:43:01,498 - ***** Epoch: 1: Eval results *****
+2025-04-15 22:43:01,498 -   train_loss = 5.9495507308415005
+2025-04-15 22:43:25,377 - ***** Epoch: 2: Eval results *****
+2025-04-15 22:43:25,377 -   train_loss = 5.955358266830444
+2025-04-15 22:43:48,504 - ***** Epoch: 3: Eval results *****
+2025-04-15 22:43:48,504 -   train_loss = 5.943988800048828
+2025-04-15 22:44:14,334 - ***** Epoch: 4: Eval results *****
+2025-04-15 22:44:14,335 -   train_loss = 5.944168635777065
+2025-04-15 22:44:41,254 - ***** Epoch: 5: Eval results *****
+2025-04-15 22:44:41,254 -   train_loss = 5.940595729010446
+2025-04-15 22:45:05,645 - ***** Epoch: 6: Eval results *****
+2025-04-15 22:45:05,645 -   train_loss = 5.940682990210397
+2025-04-15 22:45:30,833 - ***** Epoch: 7: Eval results *****
+2025-04-15 22:45:30,834 -   train_loss = 5.9418957233428955
+2025-04-15 22:46:00,809 - ***** Epoch: 8: Eval results *****
+2025-04-15 22:46:00,810 -   train_loss = 5.9308066708700995
+2025-04-15 22:46:35,999 - ***** Epoch: 9: Eval results *****
+2025-04-15 22:46:35,999 -   train_loss = 5.93429034096854

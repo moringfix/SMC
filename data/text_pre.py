@@ -47,7 +47,7 @@ def get_t_data(args, examples):
 
 
 
-def get_backbone_feats(args, data_args, examples):
+def get_backbone_feats(args, examples):
     
     if args.text_backbone.startswith('bert'):
         tokenizer = BertTokenizer.from_pretrained(args.text_pretrained_model, do_lower_case=True)   

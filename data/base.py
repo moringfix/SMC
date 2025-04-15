@@ -44,6 +44,8 @@ class DataManager:
             args.num_labels = self.num_labels = int(len(self.all_label_list) * args.cluster_num_factor)
 
         if args.setting == 'unsupervised':
+            self.logger.info('进入了无监督的设定中, 加载数据集')
+
 
             self.train_examples = get_examples(args, base_attrs, 'train')
             self.eval_examples = get_examples(args, base_attrs, 'dev')

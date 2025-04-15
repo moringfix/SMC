@@ -161,12 +161,12 @@ if __name__ == '__main__':
     param = ParamManager(args)
     args = param.args
 
-    data = DataManager(args)
+    # data = DataManager(args) # 不在这里读取
     logger = set_logger(args)
     
     args = add_config_param(args, args.config_file_name)
     args = set_up(args)
-    
+    data = DataManager(args) # 在这里读取，因为涉及到了Dataloader的构建，这个里面需要设置batch size，参数在配置文件
     logger.info("="*30+" Params "+"="*30)
     for k in args.keys():
         logger.info(f"{k}: {args[k]}")

@@ -50,7 +50,7 @@ def get_v_a_data(args ,examples, feats_path, max_seq_len):
     return data 
     
 def load_feats(args ,examples, video_feats_path):
-    # NOTE 由于已经提前分配的训练和测试（通过examples），所以不许呀哦分配train和test和dev
+    # NOTE 由于已经提前分配的训练和测试（通过examples），所以不区分train和test和dev
     with open(video_feats_path, 'rb') as f:
         video_feats = pickle.load(f)
 
@@ -88,27 +88,54 @@ def padding(feat, max_length, padding_mode = 'zero', padding_loc = 'end'):
 
     return feat
 
+# def padding_feats(feats, max_seq_len):
+
+#     p_feats = {}
+
+#     for dataset_type in feats.keys():
+#         f = feats[dataset_type]
+
+#         tmp_list = []
+#         length_list = []
+        
+#         for x in f:
+#             x_f = np.array(x) 
+#             x_f = x_f.squeeze(1) if x_f.ndim == 3 else x_f
+
+#             length_list.append(len(x_f))
+#             p_feat = padding(x_f, max_seq_len)
+#             tmp_list.append(p_feat)
+
+#         p_feats[dataset_type] = {
+#             'feats': tmp_list,
+#             'lengths': length_list
+#         }
+
+#     return p_feats    
+####################### <<START>> lzh:Semi-Supervised part ####################### 
+
 def padding_feats(feats, max_seq_len):
 
     p_feats = {}
 
-    for dataset_type in feats.keys():
-        f = feats[dataset_type]
+    # for dataset_type in feats.keys():
+    f = feats
 
-        tmp_list = []
-        length_list = []
+    tmp_list = []
+    length_list = []
         
-        for x in f:
-            x_f = np.array(x) 
-            x_f = x_f.squeeze(1) if x_f.ndim == 3 else x_f
+    for x in f:
+        x_f = np.array(x) 
+        x_f = x_f.squeeze(1) if x_f.ndim == 3 else x_f
 
-            length_list.append(len(x_f))
-            p_feat = padding(x_f, max_seq_len)
-            tmp_list.append(p_feat)
+        length_list.append(len(x_f))
+        p_feat = padding(x_f, max_seq_len)
+        tmp_list.append(p_feat)
 
-        p_feats[dataset_type] = {
-            'feats': tmp_list,
-            'lengths': length_list
-        }
+    p_feats= {
+        'feats': tmp_list,
+        'lengths': length_list
+    }
 
-    return p_feats    
+    return p_feats   
+####################### <<END>> lzh:Semi-Supervised part ####################### 
