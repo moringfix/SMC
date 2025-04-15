@@ -158,6 +158,47 @@ def get_semi_data(labeled_examples, unlabeled_examples, train_labeled_mmdata,tra
         }
     return dataloader,train_out
 
+def get_examples(args, base_attrs, mode):
+
+    processor = DatasetProcessor(args)
+    ori_examples = processor.get_examples(args,base_attrs['data_path'], mode)
+    
+    if args.setting == 'unsupervised':
+        
+        return ori_examples
+
+    elif args.setting == 'semi_supervised':
+
+        if mode == 'train':
+            
+            train_labels = np.array([example.label for example in ori_examples])
+            train_labeled_ids = []
+            for label in base_attrs['known_label_list']:
+                num = round(len(train_labels[train_labels == label]) * args.labeled_ratio)
+                pos = list(np.where(train_labels == label)[0])
+                train_labeled_ids.extend(random.sample(pos, num))
+
+            labeled_examples, unlabeled_examples = [], []
+            for idx, example in enumerate(ori_examples):
+                if idx in train_labeled_ids:
+                    labeled_examples.append(example)
+                else:
+                    unlabeled_examples.append(example)
+
+            return ori_examples, labeled_examples, unlabeled_examples
+
+        elif mode == 'dev':
+
+            examples = []
+            for example in ori_examples:
+                if (example.label in base_attrs['known_label_list']):
+                    examples.append(example)
+            
+            return examples
+        
+        elif mode == 'test':
+            return ori_examples
+
 def get_ids_annotations(args, examples,label_list,mode):
 
     if mode == 'train_unlabeled':
@@ -218,3 +259,102 @@ def get_indexes_annotations(args, bm, label_list, read_file_path):
             label_ids.append(label_id)
     
     return indexes, label_ids
+
+
+
+####################### <<START>> lzh:Semi-Supervised part ####################### 
+
+class InputExample(object):
+    """A single training/test example for simple sequence classification."""
+
+    def __init__(self, guid, text_a, text_b=None, label=None, index=None):
+        """Constructs a InputExample.
+        Args:
+            guid: Unique id for the example.
+            text_a: string. The untokenized text of the first sequence. For single
+            sequence tasks, only this sequence must be specified.
+            text_b: (Optional) string. The untokenized text of the second sequence.
+            Only must be specified for sequence pair tasks.
+            specified for train and dev examples, but not for test examples.
+        """
+        self.guid = guid
+        self.text_a = text_a
+        self.text_b = text_b
+        self.label = label
+        self.index = index
+
+
+class DataProcessor(object):
+    """Base class for data converters for sequence classification data sets."""
+
+    @classmethod
+    def _read_tsv(cls, input_file, quotechar=None):
+        """Reads a tab separated value file."""
+        with open(input_file, "r") as f:
+            reader = csv.reader(f, delimiter="\t", quotechar=quotechar)
+            lines = []
+            for line in reader:
+                if sys.version_info[0] == 2:
+                    line = list(unicode(cell, 'utf-8') for cell in line)
+                lines.append(line)
+            return lines
+
+class DatasetProcessor(DataProcessor):
+
+    def __init__(self, args):
+        super(DatasetProcessor).__init__()
+        
+        if args.dataset in ['MIntRec']:
+            self.select_id = 3
+            self.label_id = 4
+        elif args.dataset in ['clinc', 'clinc-small', 'snips', 'atis']:
+            self.select_id = 0
+        elif args.dataset in ['L-MIntRec']:
+            self.select_id = 5
+        elif args.dataset in ['MELD-DA']:
+            self.select_id = 2
+            self.label_id = 3
+        elif args.dataset in ['IEMOCAP-DA']:
+            self.select_id = 1
+            self.label_id = 2
+        
+    def get_examples(self, args, data_dir, mode):
+        
+        if mode == 'train':
+            return self._create_examples(
+                self._read_tsv(os.path.join(data_dir, "train.tsv")), "train",args)
+        elif mode == 'dev':
+            return self._create_examples(
+                self._read_tsv(os.path.join(data_dir, "dev.tsv")), "train",args)
+        elif mode == 'test':
+            return self._create_examples(
+                self._read_tsv(os.path.join(data_dir, "test.tsv")), "test",args)
+        elif mode == 'all':
+            return self._create_examples(
+                self._read_tsv(os.path.join(data_dir, "all.tsv")), "all",args)
+
+    def _create_examples(self, lines, set_type,args):
+        """Creates examples for the training and dev sets."""
+        examples = []
+        for (i, line) in enumerate(lines):
+            if i == 0:
+                continue
+
+            guid = "%s-%s" % (set_type, i)
+            text_a = line[self.select_id]
+            label = line[self.label_id] 
+
+            if args.dataset in ['MIntRec']:
+                index = '_'.join([line[0], line[1], line[2]])
+                
+            elif args.dataset in ['MELD-DA']:
+                index = '_'.join([line[0], line[1]])
+            
+            elif args.dataset in ['IEMOCAP-DA']:
+                index = line[0]
+                
+
+            examples.append(
+                InputExample(guid=guid, text_a=text_a, text_b=None,label=label,index=index))
+        return examples
+####################### <<END>> lzh:Semi-Supervised part ####################### 
