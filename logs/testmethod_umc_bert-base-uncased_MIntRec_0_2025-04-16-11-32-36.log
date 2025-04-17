@@ -1,0 +1,9 @@
+2025-04-16 11:32:36,179 - 【半监督】进入了半监督的设定中, 随机抽取标签
+2025-04-16 11:32:36,180 - The number of known intents is 5
+2025-04-16 11:32:36,180 - Lists of known labels are: [np.str_('Greet'), np.str_('Praise'), np.str_('Ask for help'), np.str_('Joke'), np.str_('Comfort')]
+2025-04-16 11:32:36,187 - Number of labeled training samples = 28
+2025-04-16 11:32:36,188 - Number of unlabeled training samples = 1306
+2025-04-16 11:32:36,188 - Number of evaluation samples = 93
+2025-04-16 11:32:36,188 - Number of testing samples = 445
+2025-04-16 11:32:36,188 - data preparation...
+2025-04-16 11:32:37,736 - data preparation...

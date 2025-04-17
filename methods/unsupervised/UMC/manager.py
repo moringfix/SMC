@@ -34,10 +34,12 @@ class UMCManager:
         self.logger = logging.getLogger(args.logger_name)
         self.device, self.model = model.device, model.model
 
-        mm_dataloader = get_dataloader(args, data.mm_data)
-        self.train_dataloader, self.test_dataloader = mm_dataloader['train'], mm_dataloader['test']
+        # mm_dataloader = get_dataloader(args, data.mm_data)
+        # self.train_dataloader, self.test_dataloader = mm_dataloader['train'], mm_dataloader['test']
+        ####################### <<START>> lzh:Semi-Supervised part ####################### 
+        self.train_dataloader, self.test_dataloader = data.train_dataloader, data.test_dataloader
         self.train_outputs = data.train_outputs
-        
+        ####################### <<END>> lzh:Semi-Supervised part ####################### 
         self.criterion = loss_map['CrossEntropyLoss']
         self.contrast_criterion = loss_map['SupConLoss']
         self.mse_criterion = loss_map['MSELoss']

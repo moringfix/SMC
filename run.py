@@ -25,6 +25,8 @@ def parse_arguments():
     parser.add_argument('--method', type=str, default='umc', help="which method to use.")
 
     parser.add_argument('--setting', type=str, default='unsupervised', help="Distinguish between semi-supervised and unsupervised.") # 新加部分
+    
+    parser.add_argument('--merge_dev', type=bool, default=False, help="Whether to merge the dev part of data into train.") # 新加部分
 
     parser.add_argument("--text_backbone", type=str, default='bert', help="which backbone to use for text modality")
 

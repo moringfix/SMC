@@ -1,0 +1,3 @@
+2025-04-16 11:24:56,079 - 【半监督】进入了半监督的设定中, 随机抽取标签
+2025-04-16 11:24:56,080 - The number of known intents is 5
+2025-04-16 11:24:56,080 - Lists of known labels are: [np.str_('Greet'), np.str_('Praise'), np.str_('Ask for help'), np.str_('Joke'), np.str_('Comfort')]

@@ -1,0 +1,419 @@
+2025-04-16 14:05:03,685 - 【无监督】进入了无监督的设定中, 加载数据集
+2025-04-16 14:05:03,685 - data preparation...
+2025-04-16 14:05:12,661 - Number of train samples = 1779
+2025-04-16 14:05:12,662 - Number of testing samples = 445
+2025-04-16 14:05:12,662 - data preparation...
+2025-04-16 14:05:15,189 - num_train_examples = 1779
+2025-04-16 14:05:15,189 - ============================== Params ==============================
+2025-04-16 14:05:15,189 - logger_name: umc_umc_bert-base-uncased_MIntRec_4
+2025-04-16 14:05:15,189 - dataset: MIntRec
+2025-04-16 14:05:15,190 - multimodal_method: umc
+2025-04-16 14:05:15,190 - method: umc
+2025-04-16 14:05:15,190 - setting: unsupervised
+2025-04-16 14:05:15,190 - text_backbone: bert-base-uncased
+2025-04-16 14:05:15,190 - seed: 4
+2025-04-16 14:05:15,190 - num_workers: 16
+2025-04-16 14:05:15,190 - log_id: umc_umc_bert-base-uncased_MIntRec_4_2025-04-16-14-05-03
+2025-04-16 14:05:15,190 - gpu_id: 1
+2025-04-16 14:05:15,190 - data_path: /root/autodl-tmp/home/Share/Dataset/LZH
+2025-04-16 14:05:15,190 - train: True
+2025-04-16 14:05:15,190 - tune: True
+2025-04-16 14:05:15,190 - save_model: True
+2025-04-16 14:05:15,190 - save_results: True
+2025-04-16 14:05:15,190 - log_path: logs
+2025-04-16 14:05:15,190 - cache_path: cache
+2025-04-16 14:05:15,190 - video_data_path: video_data
+2025-04-16 14:05:15,190 - audio_data_path: audio_data
+2025-04-16 14:05:15,190 - video_feats_path: swin_feats.pkl
+2025-04-16 14:05:15,190 - audio_feats_path: wavlm_feats.pkl
+2025-04-16 14:05:15,190 - results_path: results
+2025-04-16 14:05:15,190 - output_path: /root/autodl-tmp/home/lizhuohang/reaserch/EMNLP/SMC/outputs_test/MIntRec
+2025-04-16 14:05:15,190 - model_path: models
+2025-04-16 14:05:15,190 - config_file_name: umc_MIntRec
+2025-04-16 14:05:15,190 - results_file_name: results_umc.csv
+2025-04-16 14:05:15,190 - text_pretrained_model: uncased_L-12_H-768_A-12
+2025-04-16 14:05:15,190 - pretrained_bert_model: uncased_L-12_H-768_A-12
+2025-04-16 14:05:15,190 - pretrain_batch_size: 128
+2025-04-16 14:05:15,190 - train_batch_size: 128
+2025-04-16 14:05:15,191 - eval_batch_size: 128
+2025-04-16 14:05:15,191 - test_batch_size: 128
+2025-04-16 14:05:15,191 - num_pretrain_epochs: 100
+2025-04-16 14:05:15,191 - num_train_epochs: 100
+2025-04-16 14:05:15,191 - pretrain: [False]
+2025-04-16 14:05:15,191 - aligned_method: ctc
+2025-04-16 14:05:15,191 - need_aligned: False
+2025-04-16 14:05:15,191 - freeze_pretrain_bert_parameters: [True]
+2025-04-16 14:05:15,191 - freeze_train_bert_parameters: [True]
+2025-04-16 14:05:15,191 - pretrain_temperature: [0.1]
+2025-04-16 14:05:15,191 - train_temperature_sup: [0.5]
+2025-04-16 14:05:15,191 - train_temperature_unsup: [2]
+2025-04-16 14:05:15,191 - activation: tanh
+2025-04-16 14:05:15,191 - lr_pre: 1e-05
+2025-04-16 14:05:15,191 - lr: [1e-05, 5e-05, 0.0001, 0.0003]
+2025-04-16 14:05:15,191 - delta: [0.05]
+2025-04-16 14:05:15,192 - thres: [0.1]
+2025-04-16 14:05:15,192 - topk: [5]
+2025-04-16 14:05:15,192 - weight_decay: 0.01
+2025-04-16 14:05:15,192 - feat_dim: 768
+2025-04-16 14:05:15,192 - hidden_size: 768
+2025-04-16 14:05:15,192 - grad_clip: -1.0
+2025-04-16 14:05:15,192 - warmup_proportion: 0.5
+2025-04-16 14:05:15,192 - hidden_dropout_prob: 0.1
+2025-04-16 14:05:15,192 - weight: 1.0
+2025-04-16 14:05:15,192 - loss_mode: rdrop
+2025-04-16 14:05:15,192 - base_dim: 256
+2025-04-16 14:05:15,192 - nheads: 8
+2025-04-16 14:05:15,192 - attn_dropout: 0.1
+2025-04-16 14:05:15,192 - relu_dropout: 0.1
+2025-04-16 14:05:15,192 - embed_dropout: 0.01
+2025-04-16 14:05:15,192 - res_dropout: 0.0
+2025-04-16 14:05:15,192 - attn_mask: True
+2025-04-16 14:05:15,192 - encoder_layers_1: 1
+2025-04-16 14:05:15,192 - fusion_act: tanh
+2025-04-16 14:05:15,192 - pred_output_path: /root/autodl-tmp/home/lizhuohang/reaserch/EMNLP/SMC/outputs_test/MIntRec/umc_umc_MIntRec_bert-base-uncased_4
+2025-04-16 14:05:15,192 - model_output_path: /root/autodl-tmp/home/lizhuohang/reaserch/EMNLP/SMC/outputs_test/MIntRec/umc_umc_MIntRec_bert-base-uncased_4/models
+2025-04-16 14:05:15,192 - text_seq_len: 30
+2025-04-16 14:05:15,192 - video_seq_len: 230
+2025-04-16 14:05:15,192 - audio_seq_len: 480
+2025-04-16 14:05:15,192 - text_feat_dim: 768
+2025-04-16 14:05:15,192 - video_feat_dim: 1024
+2025-04-16 14:05:15,193 - audio_feat_dim: 768
+2025-04-16 14:05:15,193 - num_labels: 20
+2025-04-16 14:05:15,193 - num_train_examples: 1779
+2025-04-16 14:05:15,193 - ============================== End Params ==============================
+2025-04-16 14:05:16,522 - Freeze all parameters but the last layer for efficiency
+2025-04-16 14:05:17,695 - Freeze all parameters but the last layer for efficiency
+2025-04-16 14:05:17,711 - Multimodal Intent Recognition begins...
+2025-04-16 14:05:17,711 - Training begins...
+2025-04-16 14:05:32,900 - Initializing centroids with K-means++...
+2025-04-16 14:05:32,997 - K-means++ used 0.1 s
+2025-04-16 14:06:07,157 - K-means used 0.02 s
+2025-04-16 14:06:08,592 - ***** Epoch: 1 *****
+2025-04-16 14:06:08,593 - Supervised Training Loss: 4.347950
+2025-04-16 14:06:08,593 - Unsupervised Training Loss: 5.532670
+2025-04-16 14:06:42,935 - K-means used 0.02 s
+2025-04-16 14:06:44,706 - ***** Epoch: 2 *****
+2025-04-16 14:06:44,707 - Supervised Training Loss: 3.602600
+2025-04-16 14:06:44,707 - Unsupervised Training Loss: 5.564670
+2025-04-16 14:07:21,396 - K-means used 0.04 s
+2025-04-16 14:07:23,118 - ***** Epoch: 3 *****
+2025-04-16 14:07:23,118 - Supervised Training Loss: 4.976840
+2025-04-16 14:07:23,118 - Unsupervised Training Loss: 5.427040
+2025-04-16 14:07:56,219 - K-means used 0.02 s
+2025-04-16 14:07:57,920 - ***** Epoch: 4 *****
+2025-04-16 14:07:57,920 - Supervised Training Loss: 4.851910
+2025-04-16 14:07:57,920 - Unsupervised Training Loss: 5.509690
+2025-04-16 14:08:29,629 - K-means used 0.02 s
+2025-04-16 14:08:31,070 - ***** Epoch: 5 *****
+2025-04-16 14:08:31,070 - Supervised Training Loss: 4.601760
+2025-04-16 14:08:31,071 - Unsupervised Training Loss: 5.550580
+2025-04-16 14:09:04,904 - K-means used 0.03 s
+2025-04-16 14:09:06,341 - ***** Epoch: 6 *****
+2025-04-16 14:09:06,341 - Supervised Training Loss: 5.056890
+2025-04-16 14:09:06,342 - Unsupervised Training Loss: 5.350850
+2025-04-16 14:09:42,238 - K-means used 0.03 s
+2025-04-16 14:09:44,440 - ***** Epoch: 7 *****
+2025-04-16 14:09:44,441 - Supervised Training Loss: 4.973780
+2025-04-16 14:09:44,441 - Unsupervised Training Loss: 5.467130
+2025-04-16 14:10:19,213 - K-means used 0.09 s
+2025-04-16 14:10:22,726 - ***** Epoch: 8 *****
+2025-04-16 14:10:22,726 - Supervised Training Loss: 4.822090
+2025-04-16 14:10:22,727 - Unsupervised Training Loss: 5.530590
+2025-04-16 14:10:58,061 - K-means used 0.02 s
+2025-04-16 14:10:59,827 - ***** Epoch: 9 *****
+2025-04-16 14:10:59,827 - Supervised Training Loss: 5.055150
+2025-04-16 14:10:59,827 - Unsupervised Training Loss: 5.565140
+2025-04-16 14:11:32,796 - K-means used 0.04 s
+2025-04-16 14:11:34,903 - ***** Epoch: 10 *****
+2025-04-16 14:11:34,903 - Supervised Training Loss: 4.971810
+2025-04-16 14:11:34,903 - Unsupervised Training Loss: 5.409220
+2025-04-16 14:12:07,936 - K-means used 0.02 s
+2025-04-16 14:12:09,506 - ***** Epoch: 11 *****
+2025-04-16 14:12:09,506 - Supervised Training Loss: 4.894220
+2025-04-16 14:12:09,506 - Unsupervised Training Loss: 5.484550
+2025-04-16 14:12:42,599 - K-means used 0.03 s
+2025-04-16 14:12:44,627 - ***** Epoch: 12 *****
+2025-04-16 14:12:44,627 - Supervised Training Loss: 5.024690
+2025-04-16 14:12:44,628 - Unsupervised Training Loss: 5.550670
+2025-04-16 14:13:16,025 - K-means used 0.02 s
+2025-04-16 14:13:17,909 - ***** Epoch: 13 *****
+2025-04-16 14:13:17,909 - Supervised Training Loss: 4.978280
+2025-04-16 14:13:17,909 - Unsupervised Training Loss: 5.284790
+2025-04-16 14:13:53,663 - K-means used 0.02 s
+2025-04-16 14:13:55,829 - ***** Epoch: 14 *****
+2025-04-16 14:13:55,829 - Supervised Training Loss: 4.933060
+2025-04-16 14:13:55,829 - Unsupervised Training Loss: 5.413580
+2025-04-16 14:14:30,345 - K-means used 0.03 s
+2025-04-16 14:14:32,508 - ***** Epoch: 15 *****
+2025-04-16 14:14:32,509 - Supervised Training Loss: 4.826820
+2025-04-16 14:14:32,509 - Unsupervised Training Loss: 5.514600
+2025-04-16 14:15:05,206 - K-means used 0.05 s
+2025-04-16 14:15:07,454 - ***** Epoch: 16 *****
+2025-04-16 14:15:07,454 - Supervised Training Loss: 5.028360
+2025-04-16 14:15:07,454 - Unsupervised Training Loss: 4.933800
+2025-04-16 14:15:40,106 - K-means used 0.05 s
+2025-04-16 14:15:42,454 - ***** Epoch: 17 *****
+2025-04-16 14:15:42,455 - Supervised Training Loss: 5.003420
+2025-04-16 14:15:42,455 - Unsupervised Training Loss: 5.176740
+2025-04-16 14:16:04,626 - Training is finished...
+2025-04-16 14:16:04,626 - Testing begins...
+2025-04-16 14:16:10,960 - ***** Test results *****
+2025-04-16 14:16:10,961 -   ACC = 37.3
+2025-04-16 14:16:10,961 -   ARI = 17.7
+2025-04-16 14:16:10,961 -   NMI = 42.73
+2025-04-16 14:16:10,961 -   fmi = 22.71
+2025-04-16 14:16:10,961 - Testing is finished...
+2025-04-16 14:16:10,961 - Multimodal intent recognition is finished...
+2025-04-16 14:16:10,961 - Results are saved in results/results_umc.csv
+2025-04-16 14:16:12,236 - Freeze all parameters but the last layer for efficiency
+2025-04-16 14:16:13,372 - Freeze all parameters but the last layer for efficiency
+2025-04-16 14:16:13,389 - Multimodal Intent Recognition begins...
+2025-04-16 14:16:13,390 - Training begins...
+2025-04-16 14:16:24,272 - Initializing centroids with K-means++...
+2025-04-16 14:16:24,337 - K-means++ used 0.07 s
+2025-04-16 14:16:57,461 - K-means used 0.03 s
+2025-04-16 14:16:59,078 - ***** Epoch: 1 *****
+2025-04-16 14:16:59,078 - Supervised Training Loss: 4.347950
+2025-04-16 14:16:59,078 - Unsupervised Training Loss: 5.532600
+2025-04-16 14:17:35,484 - K-means used 0.02 s
+2025-04-16 14:17:36,843 - ***** Epoch: 2 *****
+2025-04-16 14:17:36,843 - Supervised Training Loss: 3.672600
+2025-04-16 14:17:36,844 - Unsupervised Training Loss: 5.565250
+2025-04-16 14:18:10,444 - K-means used 0.02 s
+2025-04-16 14:18:12,009 - ***** Epoch: 3 *****
+2025-04-16 14:18:12,010 - Supervised Training Loss: 4.938920
+2025-04-16 14:18:12,010 - Unsupervised Training Loss: 5.425990
+2025-04-16 14:18:45,409 - K-means used 0.02 s
+2025-04-16 14:18:46,959 - ***** Epoch: 4 *****
+2025-04-16 14:18:46,959 - Supervised Training Loss: 4.819300
+2025-04-16 14:18:46,959 - Unsupervised Training Loss: 5.504390
+2025-04-16 14:19:19,529 - K-means used 0.02 s
+2025-04-16 14:19:20,816 - ***** Epoch: 5 *****
+2025-04-16 14:19:20,816 - Supervised Training Loss: 4.464340
+2025-04-16 14:19:20,816 - Unsupervised Training Loss: 5.544700
+2025-04-16 14:19:53,423 - K-means used 0.03 s
+2025-04-16 14:19:55,214 - ***** Epoch: 6 *****
+2025-04-16 14:19:55,214 - Supervised Training Loss: 4.896910
+2025-04-16 14:19:55,214 - Unsupervised Training Loss: 5.331520
+2025-04-16 14:20:27,660 - K-means used 0.02 s
+2025-04-16 14:20:31,430 - ***** Epoch: 7 *****
+2025-04-16 14:20:31,430 - Supervised Training Loss: 4.758850
+2025-04-16 14:20:31,430 - Unsupervised Training Loss: 5.455480
+2025-04-16 14:21:06,260 - K-means used 0.02 s
+2025-04-16 14:21:08,054 - ***** Epoch: 8 *****
+2025-04-16 14:21:08,055 - Supervised Training Loss: 4.550390
+2025-04-16 14:21:08,055 - Unsupervised Training Loss: 5.511570
+2025-04-16 14:21:41,640 - K-means used 0.02 s
+2025-04-16 14:21:43,950 - ***** Epoch: 9 *****
+2025-04-16 14:21:43,950 - Supervised Training Loss: 4.749720
+2025-04-16 14:21:43,950 - Unsupervised Training Loss: 5.549210
+2025-04-16 14:22:17,646 - K-means used 0.02 s
+2025-04-16 14:22:19,508 - ***** Epoch: 10 *****
+2025-04-16 14:22:19,508 - Supervised Training Loss: 4.652210
+2025-04-16 14:22:19,508 - Unsupervised Training Loss: 5.388300
+2025-04-16 14:22:54,249 - K-means used 0.02 s
+2025-04-16 14:22:56,422 - ***** Epoch: 11 *****
+2025-04-16 14:22:56,422 - Supervised Training Loss: 4.537650
+2025-04-16 14:22:56,422 - Unsupervised Training Loss: 5.468450
+2025-04-16 14:23:28,475 - K-means used 0.02 s
+2025-04-16 14:23:31,002 - ***** Epoch: 12 *****
+2025-04-16 14:23:31,002 - Supervised Training Loss: 4.659790
+2025-04-16 14:23:31,002 - Unsupervised Training Loss: 5.534040
+2025-04-16 14:24:04,314 - K-means used 0.03 s
+2025-04-16 14:24:06,660 - ***** Epoch: 13 *****
+2025-04-16 14:24:06,660 - Supervised Training Loss: 4.602040
+2025-04-16 14:24:06,660 - Unsupervised Training Loss: 5.253560
+2025-04-16 14:24:38,908 - K-means used 0.02 s
+2025-04-16 14:24:41,745 - ***** Epoch: 14 *****
+2025-04-16 14:24:41,745 - Supervised Training Loss: 4.557540
+2025-04-16 14:24:41,745 - Unsupervised Training Loss: 5.392380
+2025-04-16 14:25:15,851 - K-means used 0.02 s
+2025-04-16 14:25:18,555 - ***** Epoch: 15 *****
+2025-04-16 14:25:18,555 - Supervised Training Loss: 4.423060
+2025-04-16 14:25:18,555 - Unsupervised Training Loss: 5.496750
+2025-04-16 14:25:50,160 - K-means used 0.02 s
+2025-04-16 14:25:52,106 - ***** Epoch: 16 *****
+2025-04-16 14:25:52,106 - Supervised Training Loss: 4.633970
+2025-04-16 14:25:52,106 - Unsupervised Training Loss: 4.960820
+2025-04-16 14:26:24,951 - K-means used 0.02 s
+2025-04-16 14:26:27,431 - ***** Epoch: 17 *****
+2025-04-16 14:26:27,431 - Supervised Training Loss: 4.622410
+2025-04-16 14:26:27,431 - Unsupervised Training Loss: 5.172790
+2025-04-16 14:26:50,708 - Training is finished...
+2025-04-16 14:26:50,709 - Testing begins...
+2025-04-16 14:26:57,052 - ***** Test results *****
+2025-04-16 14:26:57,053 -   ACC = 41.12
+2025-04-16 14:26:57,053 -   ARI = 18.74
+2025-04-16 14:26:57,053 -   NMI = 44.0
+2025-04-16 14:26:57,053 -   fmi = 24.01
+2025-04-16 14:26:57,053 - Testing is finished...
+2025-04-16 14:26:57,053 - Multimodal intent recognition is finished...
+2025-04-16 14:26:57,053 - Results are saved in results/results_umc.csv
+2025-04-16 14:26:58,224 - Freeze all parameters but the last layer for efficiency
+2025-04-16 14:26:59,665 - Freeze all parameters but the last layer for efficiency
+2025-04-16 14:26:59,686 - Multimodal Intent Recognition begins...
+2025-04-16 14:26:59,686 - Training begins...
+2025-04-16 14:27:12,128 - Initializing centroids with K-means++...
+2025-04-16 14:27:12,318 - K-means++ used 0.19 s
+2025-04-16 14:27:51,540 - K-means used 0.02 s
+2025-04-16 14:27:52,978 - ***** Epoch: 1 *****
+2025-04-16 14:27:52,978 - Supervised Training Loss: 4.347950
+2025-04-16 14:27:52,978 - Unsupervised Training Loss: 5.532620
+2025-04-16 14:28:26,262 - K-means used 0.02 s
+2025-04-16 14:28:28,001 - ***** Epoch: 2 *****
+2025-04-16 14:28:28,002 - Supervised Training Loss: 3.774280
+2025-04-16 14:28:28,002 - Unsupervised Training Loss: 5.563270
+2025-04-16 14:29:00,440 - K-means used 0.02 s
+2025-04-16 14:29:01,907 - ***** Epoch: 3 *****
+2025-04-16 14:29:01,908 - Supervised Training Loss: 4.891250
+2025-04-16 14:29:01,908 - Unsupervised Training Loss: 5.425130
+2025-04-16 14:29:36,299 - K-means used 0.02 s
+2025-04-16 14:29:37,621 - ***** Epoch: 4 *****
+2025-04-16 14:29:37,622 - Supervised Training Loss: 4.719540
+2025-04-16 14:29:37,622 - Unsupervised Training Loss: 5.499420
+2025-04-16 14:30:08,303 - K-means used 0.03 s
+2025-04-16 14:30:10,004 - ***** Epoch: 5 *****
+2025-04-16 14:30:10,004 - Supervised Training Loss: 4.391280
+2025-04-16 14:30:10,004 - Unsupervised Training Loss: 5.539780
+2025-04-16 14:30:45,896 - K-means used 0.13 s
+2025-04-16 14:30:48,017 - ***** Epoch: 6 *****
+2025-04-16 14:30:48,018 - Supervised Training Loss: 4.757780
+2025-04-16 14:30:48,018 - Unsupervised Training Loss: 5.322820
+2025-04-16 14:31:21,454 - K-means used 0.02 s
+2025-04-16 14:31:23,091 - ***** Epoch: 7 *****
+2025-04-16 14:31:23,092 - Supervised Training Loss: 4.599100
+2025-04-16 14:31:23,092 - Unsupervised Training Loss: 5.451920
+2025-04-16 14:31:57,019 - K-means used 0.02 s
+2025-04-16 14:31:58,561 - ***** Epoch: 8 *****
+2025-04-16 14:31:58,561 - Supervised Training Loss: 4.426780
+2025-04-16 14:31:58,561 - Unsupervised Training Loss: 5.505930
+2025-04-16 14:32:32,241 - K-means used 0.02 s
+2025-04-16 14:32:34,178 - ***** Epoch: 9 *****
+2025-04-16 14:32:34,178 - Supervised Training Loss: 4.596910
+2025-04-16 14:32:34,178 - Unsupervised Training Loss: 5.540590
+2025-04-16 14:33:08,547 - K-means used 0.02 s
+2025-04-16 14:33:10,656 - ***** Epoch: 10 *****
+2025-04-16 14:33:10,656 - Supervised Training Loss: 4.504890
+2025-04-16 14:33:10,656 - Unsupervised Training Loss: 5.382340
+2025-04-16 14:33:46,332 - K-means used 0.03 s
+2025-04-16 14:33:48,263 - ***** Epoch: 11 *****
+2025-04-16 14:33:48,264 - Supervised Training Loss: 4.404220
+2025-04-16 14:33:48,264 - Unsupervised Training Loss: 5.462030
+2025-04-16 14:34:20,501 - K-means used 0.06 s
+2025-04-16 14:34:22,334 - ***** Epoch: 12 *****
+2025-04-16 14:34:22,334 - Supervised Training Loss: 4.520030
+2025-04-16 14:34:22,334 - Unsupervised Training Loss: 5.520750
+2025-04-16 14:34:56,156 - K-means used 0.02 s
+2025-04-16 14:34:58,144 - ***** Epoch: 13 *****
+2025-04-16 14:34:58,144 - Supervised Training Loss: 4.482660
+2025-04-16 14:34:58,144 - Unsupervised Training Loss: 5.257620
+2025-04-16 14:35:31,197 - K-means used 0.02 s
+2025-04-16 14:35:33,987 - ***** Epoch: 14 *****
+2025-04-16 14:35:33,988 - Supervised Training Loss: 4.425820
+2025-04-16 14:35:33,988 - Unsupervised Training Loss: 5.388520
+2025-04-16 14:36:09,524 - K-means used 0.05 s
+2025-04-16 14:36:12,418 - ***** Epoch: 15 *****
+2025-04-16 14:36:12,418 - Supervised Training Loss: 4.316620
+2025-04-16 14:36:12,418 - Unsupervised Training Loss: 5.491400
+2025-04-16 14:36:52,118 - K-means used 0.02 s
+2025-04-16 14:36:54,597 - ***** Epoch: 16 *****
+2025-04-16 14:36:54,597 - Supervised Training Loss: 4.516510
+2025-04-16 14:36:54,597 - Unsupervised Training Loss: 4.955820
+2025-04-16 14:37:37,431 - K-means used 0.1 s
+2025-04-16 14:37:40,264 - ***** Epoch: 17 *****
+2025-04-16 14:37:40,265 - Supervised Training Loss: 4.500780
+2025-04-16 14:37:40,265 - Unsupervised Training Loss: 5.176240
+2025-04-16 14:38:05,287 - Training is finished...
+2025-04-16 14:38:05,288 - Testing begins...
+2025-04-16 14:38:13,649 - ***** Test results *****
+2025-04-16 14:38:13,650 -   ACC = 40.45
+2025-04-16 14:38:13,650 -   ARI = 19.98
+2025-04-16 14:38:13,650 -   NMI = 45.24
+2025-04-16 14:38:13,651 -   fmi = 25.0
+2025-04-16 14:38:13,652 - Testing is finished...
+2025-04-16 14:38:13,652 - Multimodal intent recognition is finished...
+2025-04-16 14:38:13,652 - Results are saved in results/results_umc.csv
+2025-04-16 14:38:14,703 - Freeze all parameters but the last layer for efficiency
+2025-04-16 14:38:15,757 - Freeze all parameters but the last layer for efficiency
+2025-04-16 14:38:15,766 - Multimodal Intent Recognition begins...
+2025-04-16 14:38:15,766 - Training begins...
+2025-04-16 14:38:31,690 - Initializing centroids with K-means++...
+2025-04-16 14:38:31,796 - K-means++ used 0.11 s
+2025-04-16 14:39:11,626 - K-means used 0.03 s
+2025-04-16 14:39:13,860 - ***** Epoch: 1 *****
+2025-04-16 14:39:13,860 - Supervised Training Loss: 4.347950
+2025-04-16 14:39:13,860 - Unsupervised Training Loss: 5.532960
+2025-04-16 14:39:51,922 - K-means used 0.02 s
+2025-04-16 14:39:53,998 - ***** Epoch: 2 *****
+2025-04-16 14:39:53,998 - Supervised Training Loss: 4.980980
+2025-04-16 14:39:53,998 - Unsupervised Training Loss: 5.559770
+2025-04-16 14:40:32,521 - K-means used 0.04 s
+2025-04-16 14:40:34,541 - ***** Epoch: 3 *****
+2025-04-16 14:40:34,541 - Supervised Training Loss: 4.798770
+2025-04-16 14:40:34,541 - Unsupervised Training Loss: 5.420840
+2025-04-16 14:41:08,404 - K-means used 0.04 s
+2025-04-16 14:41:10,106 - ***** Epoch: 4 *****
+2025-04-16 14:41:10,107 - Supervised Training Loss: 4.549710
+2025-04-16 14:41:10,107 - Unsupervised Training Loss: 5.487080
+2025-04-16 14:41:43,839 - K-means used 0.02 s
+2025-04-16 14:41:45,437 - ***** Epoch: 5 *****
+2025-04-16 14:41:45,437 - Supervised Training Loss: 4.192100
+2025-04-16 14:41:45,437 - Unsupervised Training Loss: 5.523480
+2025-04-16 14:42:18,233 - K-means used 0.02 s
+2025-04-16 14:42:19,795 - ***** Epoch: 6 *****
+2025-04-16 14:42:19,795 - Supervised Training Loss: 4.539850
+2025-04-16 14:42:19,795 - Unsupervised Training Loss: 5.309760
+2025-04-16 14:42:52,840 - K-means used 0.02 s
+2025-04-16 14:42:54,558 - ***** Epoch: 7 *****
+2025-04-16 14:42:54,558 - Supervised Training Loss: 4.402790
+2025-04-16 14:42:54,558 - Unsupervised Training Loss: 5.423190
+2025-04-16 14:43:26,475 - K-means used 0.02 s
+2025-04-16 14:43:28,039 - ***** Epoch: 8 *****
+2025-04-16 14:43:28,039 - Supervised Training Loss: 4.227540
+2025-04-16 14:43:28,040 - Unsupervised Training Loss: 5.482120
+2025-04-16 14:44:04,296 - K-means used 0.03 s
+2025-04-16 14:44:06,551 - ***** Epoch: 9 *****
+2025-04-16 14:44:06,552 - Supervised Training Loss: 4.424680
+2025-04-16 14:44:06,552 - Unsupervised Training Loss: 4.919580
+2025-04-16 14:44:37,662 - K-means used 0.02 s
+2025-04-16 14:44:39,956 - ***** Epoch: 10 *****
+2025-04-16 14:44:39,956 - Supervised Training Loss: 4.355190
+2025-04-16 14:44:39,957 - Unsupervised Training Loss: 5.364470
+2025-04-16 14:45:14,174 - K-means used 0.02 s
+2025-04-16 14:45:17,167 - ***** Epoch: 11 *****
+2025-04-16 14:45:17,167 - Supervised Training Loss: 4.253420
+2025-04-16 14:45:17,168 - Unsupervised Training Loss: 5.440730
+2025-04-16 14:45:49,814 - K-means used 0.03 s
+2025-04-16 14:45:51,923 - ***** Epoch: 12 *****
+2025-04-16 14:45:51,924 - Supervised Training Loss: 4.381140
+2025-04-16 14:45:51,924 - Unsupervised Training Loss: 5.506110
+2025-04-16 14:46:22,816 - K-means used 0.02 s
+2025-04-16 14:46:24,967 - ***** Epoch: 13 *****
+2025-04-16 14:46:24,967 - Supervised Training Loss: 4.331180
+2025-04-16 14:46:24,967 - Unsupervised Training Loss: 5.227740
+2025-04-16 14:46:57,209 - K-means used 0.02 s
+2025-04-16 14:46:59,164 - ***** Epoch: 14 *****
+2025-04-16 14:46:59,165 - Supervised Training Loss: 4.281470
+2025-04-16 14:46:59,165 - Unsupervised Training Loss: 5.369270
+2025-04-16 14:47:30,538 - K-means used 0.02 s
+2025-04-16 14:47:32,548 - ***** Epoch: 15 *****
+2025-04-16 14:47:32,548 - Supervised Training Loss: 4.124250
+2025-04-16 14:47:32,548 - Unsupervised Training Loss: 5.471730
+2025-04-16 14:48:05,899 - K-means used 0.01 s
+2025-04-16 14:48:08,022 - ***** Epoch: 16 *****
+2025-04-16 14:48:08,022 - Supervised Training Loss: 4.337530
+2025-04-16 14:48:08,022 - Unsupervised Training Loss: 4.966530
+2025-04-16 14:48:39,502 - K-means used 0.02 s
+2025-04-16 14:48:42,077 - ***** Epoch: 17 *****
+2025-04-16 14:48:42,077 - Supervised Training Loss: 4.318900
+2025-04-16 14:48:42,077 - Unsupervised Training Loss: 5.158390
+2025-04-16 14:49:04,180 - Training is finished...
+2025-04-16 14:49:04,180 - Testing begins...
+2025-04-16 14:49:11,697 - ***** Test results *****
+2025-04-16 14:49:11,698 -   ACC = 37.75
+2025-04-16 14:49:11,698 -   ARI = 16.89
+2025-04-16 14:49:11,698 -   NMI = 43.59
+2025-04-16 14:49:11,698 -   fmi = 22.11
+2025-04-16 14:49:11,698 - Testing is finished...
+2025-04-16 14:49:11,698 - Multimodal intent recognition is finished...
+2025-04-16 14:49:11,698 - Results are saved in results/results_umc.csv

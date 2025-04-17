@@ -15,8 +15,8 @@ class InstanceLoss(nn.Module):
     def mask_correlated_samples(self, batch_size):
         N = 2 * batch_size
         mask = torch.ones((N, N))
-        mask = mask.fill_diagonal_(0)
-        for i in range(batch_size):
+        mask = mask.fill_diagonal_(0) # NOTE 样本自己mask
+        for i in range(batch_size): # NOTE 正样本mask
             mask[i, batch_size + i] = 0
             mask[batch_size + i, i] = 0
         mask = mask.bool()
@@ -24,10 +24,10 @@ class InstanceLoss(nn.Module):
 
     def forward(self, z_i, z_j):
         N = 2 * self.batch_size
-        z = torch.cat((z_i, z_j), dim=0)
+        z = torch.cat((z_i, z_j), dim=0) # 两种视角拼接，正样本对
 
         sim = torch.matmul(z, z.T) / self.temperature
-        sim_i_j = torch.diag(sim, self.batch_size)
+        sim_i_j = torch.diag(sim, self.batch_size) 
         sim_j_i = torch.diag(sim, -self.batch_size)
 
         positive_samples = torch.cat((sim_i_j, sim_j_i), dim=0).reshape(N, 1)

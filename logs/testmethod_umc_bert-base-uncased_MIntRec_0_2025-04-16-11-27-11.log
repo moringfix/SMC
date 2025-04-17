@@ -1,0 +1,87 @@
+2025-04-16 11:27:11,173 - 【半监督】进入了半监督的设定中, 随机抽取标签
+2025-04-16 11:27:11,173 - The number of known intents is 5
+2025-04-16 11:27:11,173 - Lists of known labels are: [np.str_('Greet'), np.str_('Praise'), np.str_('Ask for help'), np.str_('Joke'), np.str_('Comfort')]
+2025-04-16 11:27:11,180 - Number of labeled training samples = 28
+2025-04-16 11:27:11,180 - Number of unlabeled training samples = 1306
+2025-04-16 11:27:11,181 - Number of evaluation samples = 93
+2025-04-16 11:27:11,181 - Number of testing samples = 445
+2025-04-16 11:27:11,181 - data preparation...
+2025-04-16 11:27:12,808 - data preparation...
+2025-04-16 11:27:25,050 - data preparation...
+2025-04-16 11:27:26,309 - data preparation...
+2025-04-16 11:27:28,623 - num_train_examples = 1334
+2025-04-16 11:27:28,624 - ============================== Params ==============================
+2025-04-16 11:27:28,624 - logger_name: testmethod_umc_bert-base-uncased_MIntRec_0
+2025-04-16 11:27:28,624 - dataset: MIntRec
+2025-04-16 11:27:28,624 - multimodal_method: umc
+2025-04-16 11:27:28,624 - method: testmethod
+2025-04-16 11:27:28,624 - setting: semi_supervised
+2025-04-16 11:27:28,624 - text_backbone: bert-base-uncased
+2025-04-16 11:27:28,624 - seed: 0
+2025-04-16 11:27:28,624 - num_workers: 16
+2025-04-16 11:27:28,624 - log_id: testmethod_umc_bert-base-uncased_MIntRec_0_2025-04-16-11-27-11
+2025-04-16 11:27:28,624 - gpu_id: 1
+2025-04-16 11:27:28,624 - data_path: /root/autodl-tmp/home/Share/Dataset/LZH
+2025-04-16 11:27:28,624 - train: True
+2025-04-16 11:27:28,624 - tune: True
+2025-04-16 11:27:28,624 - save_model: True
+2025-04-16 11:27:28,624 - save_results: True
+2025-04-16 11:27:28,624 - log_path: logs
+2025-04-16 11:27:28,624 - cache_path: cache
+2025-04-16 11:27:28,624 - video_data_path: video_data
+2025-04-16 11:27:28,624 - audio_data_path: audio_data
+2025-04-16 11:27:28,624 - video_feats_path: swin_feats.pkl
+2025-04-16 11:27:28,624 - audio_feats_path: wavlm_feats.pkl
+2025-04-16 11:27:28,624 - results_path: results
+2025-04-16 11:27:28,624 - output_path: /root/autodl-tmp/home/lizhuohang/reaserch/EMNLP/SMC/outputs_test
+2025-04-16 11:27:28,624 - model_path: models
+2025-04-16 11:27:28,624 - config_file_name: testmethod_MIntRec
+2025-04-16 11:27:28,625 - results_file_name: results_smc_test.csv
+2025-04-16 11:27:28,625 - text_pretrained_model: uncased_L-12_H-768_A-12
+2025-04-16 11:27:28,625 - pretrained_bert_model: uncased_L-12_H-768_A-12
+2025-04-16 11:27:28,625 - pretrain_batch_size: 128
+2025-04-16 11:27:28,625 - train_batch_size: 128
+2025-04-16 11:27:28,625 - eval_batch_size: 64
+2025-04-16 11:27:28,625 - test_batch_size: 64
+2025-04-16 11:27:28,625 - num_pretrain_epochs: 100
+2025-04-16 11:27:28,625 - num_train_epochs: 100
+2025-04-16 11:27:28,625 - pretrain: [True]
+2025-04-16 11:27:28,625 - aligned_method: ctc
+2025-04-16 11:27:28,625 - need_aligned: False
+2025-04-16 11:27:28,625 - freeze_pretrain_bert_parameters: [True]
+2025-04-16 11:27:28,625 - freeze_train_bert_parameters: [True]
+2025-04-16 11:27:28,625 - activation: tanh
+2025-04-16 11:27:28,625 - lr_pre: [3e-05]
+2025-04-16 11:27:28,625 - lr: [5e-05]
+2025-04-16 11:27:28,625 - weight_decay: 0.01
+2025-04-16 11:27:28,625 - feat_dim: 768
+2025-04-16 11:27:28,625 - hidden_size: 768
+2025-04-16 11:27:28,625 - warmup_proportion: 0.1
+2025-04-16 11:27:28,625 - hidden_dropout_prob: 0.01
+2025-04-16 11:27:28,625 - weight: 1.0
+2025-04-16 11:27:28,625 - loss_mode: rdrop
+2025-04-16 11:27:28,625 - base_dim: 256
+2025-04-16 11:27:28,625 - nheads: 8
+2025-04-16 11:27:28,625 - attn_dropout: 0.1
+2025-04-16 11:27:28,626 - relu_dropout: 0.01
+2025-04-16 11:27:28,626 - embed_dropout: 0.1
+2025-04-16 11:27:28,626 - res_dropout: 0.0
+2025-04-16 11:27:28,626 - attn_mask: True
+2025-04-16 11:27:28,626 - encoder_layers_1: 1
+2025-04-16 11:27:28,626 - fusion_act: tanh
+2025-04-16 11:27:28,626 - known_cls_ratio: 0.25
+2025-04-16 11:27:28,626 - labeled_ratio: 0.1
+2025-04-16 11:27:28,626 - cluster_num_factor: 1.0
+2025-04-16 11:27:28,626 - wait_patient: 10
+2025-04-16 11:27:28,626 - pred_output_path: /root/autodl-tmp/home/lizhuohang/reaserch/EMNLP/SMC/outputs_test/testmethod_umc_MIntRec_bert-base-uncased_0
+2025-04-16 11:27:28,626 - model_output_path: /root/autodl-tmp/home/lizhuohang/reaserch/EMNLP/SMC/outputs_test/testmethod_umc_MIntRec_bert-base-uncased_0/models
+2025-04-16 11:27:28,626 - text_seq_len: 30
+2025-04-16 11:27:28,626 - video_seq_len: 230
+2025-04-16 11:27:28,626 - audio_seq_len: 480
+2025-04-16 11:27:28,626 - text_feat_dim: 768
+2025-04-16 11:27:28,626 - video_feat_dim: 1024
+2025-04-16 11:27:28,626 - audio_feat_dim: 768
+2025-04-16 11:27:28,626 - n_known_cls: 5
+2025-04-16 11:27:28,626 - num_labels: 20
+2025-04-16 11:27:28,626 - num_train_examples: 1334
+2025-04-16 11:27:28,626 - ============================== End Params ==============================

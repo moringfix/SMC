@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 # for seed in 0 1 2 3 4
-for seed in  0 # 0 1 2 3 4
+for seed in  0 1 2 3 4
 
 do
     for multimodal_method in 'umc'
@@ -10,7 +10,7 @@ do
         do 
             for text_backbone in 'bert-base-uncased'
             do
-                for dataset in  'MIntRec' # 'MELD-DA'#  'IEMOCAP-DA'
+                for dataset in  'MIntRec' # 'MIntRec' # 'MELD-DA'#  'IEMOCAP-DA'
                 do
                     python run.py \
                     --dataset $dataset \
@@ -23,14 +23,14 @@ do
                     --tune \
                     --save_results \
                     --seed $seed \
-                    --gpu_id '0' \
+                    --gpu_id '1' \
                     --save_model \
                     --video_feats_path 'swin_feats.pkl' \
                     --audio_feats_path 'wavlm_feats.pkl' \
                     --text_backbone $text_backbone \
                     --config_file_name ${method}_${dataset} \
-                    --results_file_name "results_umc.csv" \
-                    --output_path "/root/autodl-tmp/home/lizhuohang/reaserch/EMNLP/SMC/outputs_test/${dataset}"
+                    --results_file_name "results_umc_pre.csv" \
+                    --output_path "/root/autodl-tmp/home/lizhuohang/reaserch/EMNLP/SMC/outputs_test2/${dataset}"
                 done
             done
         done

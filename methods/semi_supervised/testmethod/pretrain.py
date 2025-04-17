@@ -65,12 +65,13 @@ class PretrainTestmethod:
 
             self.model.train()
             tr_loss, nb_tr_steps = 0, 0
-
+            self.logger.info(f'【测试】【预训练】: {epoch}')
             for batch in tqdm(self.train_labeled_dataloader, desc = "Iteration"):
                 text_feats = batch['text_feats'].to(self.device)
                 video_feats = batch['video_feats'].to(self.device)
                 audio_feats = batch['audio_feats'].to(self.device)
                 label_ids = batch['label_ids'].to(self.device)
+                self.logger.info(f'【测试】【预训练】: {label_ids}')
 
                 with torch.set_grad_enabled(True):
                     _,mlp_output = self.model(text_feats, video_feats, audio_feats, mode='pretrain-mm')

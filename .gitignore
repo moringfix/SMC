@@ -1,4 +1,10 @@
 uncased_L-12_H-768_A-12
 outputs
 outputs/
+outputs_test/
+outputs_test2/
 results
+
+# 测试脚本
+losses/loss_test.ipynb
+data/test.ipynb
