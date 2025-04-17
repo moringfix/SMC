@@ -10,8 +10,10 @@ from utils.functions import save_model, restore_model
 from .utils import * #set_optimizer, view_generator, get_pseudo_dataloader
 
 from backbones.base import freeze_bert_parameters
-
-class PretrainUMCManager:
+import copy, logging, os, torch, torch.nn.functional as F
+from tqdm import trange, tqdm
+from utils.functions import EarlyStopping
+class PretrainUMC2Manager:
     
     def __init__(self, args, data, model):
 
@@ -48,6 +50,7 @@ class PretrainUMCManager:
     def _train(self, args):
         
         pseudo_data, pseudo_dataloader = get_pseudo_dataloader(args, self.train_outputs, mode='pretrain')
+        early_stopper = EarlyStopping(args, delta=1e-3)
 
         for epoch in trange(int(args.num_pretrain_epochs), desc="Epoch"):
             
@@ -85,7 +88,13 @@ class PretrainUMCManager:
 
                     self.optimizer.step()
                     self.scheduler.step()
-                    
+
+            # # ---------- ⑤ 可选：保存 ----------
+            # if args.save_model:
+            #     save_dir = os.path.join(args.model_output_path, 'pretrain')
+            #     os.makedirs(save_dir, exist_ok=True)
+            #     save_model(self.model, save_dir)
+
             loss = tr_loss / nb_tr_steps
             eval_results = {
                 'train_loss': loss,
@@ -93,6 +102,21 @@ class PretrainUMCManager:
             self.logger.info("***** Epoch: %s: Eval results *****", str(epoch + 1))
             for key in sorted(eval_results.keys()):
                 self.logger.info("  %s = %s", key, str(eval_results[key]))
+
+            # ---------- ② 本 epoch 监控值 ----------
+            epoch_loss = loss      # ← score
+            self.logger.info(f"Epoch {epoch+1} | train_loss = {epoch_loss:.6f}")
+
+            # ---------- ③ Early‑Stop 检查 ----------
+            early_stopper(epoch_loss, self.model)
+            if early_stopper.early_stop:
+                self.logger.info("Early stopping triggered. "
+                                f"Best {early_stopper.monitor}: {early_stopper.best_score:.6f}")
+                break
+
+        # ---------- ④ 把最好模型取回来 ----------
+        if early_stopper.best_model is not None:
+            self.model = early_stopper.best_model
 
         if args.save_model:
             pretrained_model_dir = os.path.join(args.model_output_path, 'pretrain')

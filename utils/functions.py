@@ -16,9 +16,9 @@ class EarlyStopping:
             patience (int): How long to wait after last time validation loss improved.
             delta (float): Minimum change in the monitored quantity to qualify as an improvement.         
         """
-        self.patience = args.wait_patience
+        self.patience = 5 # args.wait_patience
         self.logger = logging.getLogger(args.logger_name)
-        self.monitor = args.eval_monitor
+        self.monitor =  'loss' # args.eval_monitor
         self.counter = 0
         self.best_score = 1e8 if self.monitor == 'loss' else 1e-6
         self.early_stop = False

@@ -10,7 +10,7 @@ class InstanceLoss(nn.Module):
         self.device = device
 
         self.mask = self.mask_correlated_samples(batch_size)
-        self.criterion = nn.CrossEntropyLoss(reduction="sum")
+        self.criterion = nn.CrossEntropyLoss(reduction="sum") # 以交叉熵为基础
 
     def mask_correlated_samples(self, batch_size):
         N = 2 * batch_size
@@ -24,16 +24,16 @@ class InstanceLoss(nn.Module):
 
     def forward(self, z_i, z_j):
         N = 2 * self.batch_size
-        z = torch.cat((z_i, z_j), dim=0) # 两种视角拼接，正样本对
+        z = torch.cat((z_i, z_j), dim=0) # 两种视角拼接，正样本对(2B,...)
 
-        sim = torch.matmul(z, z.T) / self.temperature
-        sim_i_j = torch.diag(sim, self.batch_size) 
-        sim_j_i = torch.diag(sim, -self.batch_size)
+        sim = torch.matmul(z, z.T) / self.temperature # (2B, 2B) 相似度矩阵
+        sim_i_j = torch.diag(sim, self.batch_size)  # 取上batch对角线，即i对j的相似度
+        sim_j_i = torch.diag(sim, -self.batch_size) # 取下batch对角线，即j对i的相似度
 
-        positive_samples = torch.cat((sim_i_j, sim_j_i), dim=0).reshape(N, 1)
-        negative_samples = sim[self.mask].reshape(N, -1)
+        positive_samples = torch.cat((sim_i_j, sim_j_i), dim=0).reshape(N, 1) # (2B, 1) 正样本对
+        negative_samples = sim[self.mask].reshape(N, -1) # (2B, 2B-1) 负样本对
 
-        labels = torch.zeros(N).to(positive_samples.device).long()
+        labels = torch.zeros(N).to(positive_samples.device).long() # 告诉交叉熵，第0列是正类，对应下面postive在第0列
         logits = torch.cat((positive_samples, negative_samples), dim=1)
         loss = self.criterion(logits, labels)
         loss /= N

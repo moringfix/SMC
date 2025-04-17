@@ -20,7 +20,7 @@ class Param():
             test_batch_size (int): The batch size for testing.
             wait_patient (int): Patient steps for Early Stop.
         """
-        if args.multimodal_method == 'umc':
+        if args.multimodal_method == 'umc2':
             hyper_parameters = {
                 'pretrained_bert_model': 'uncased_L-12_H-768_A-12',
                 'pretrain_batch_size': 128,

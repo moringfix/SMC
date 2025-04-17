@@ -62,7 +62,7 @@ class DataManager:
 
         # ---- Step 2: 一次性 读取 train/dev/test 的原始样本 ----
         train_data = get_examples(args, base_attrs, 'train')  # 根据 setting，可能返回一个 list 或一个 tuple
-        dev_data   = get_examples(args, base_attrs, 'dev')
+        dev_data   = get_examples(args, base_attrs, 'dev') # 根据 setting 以及merge，可能返回一个 list 或一个 tuple
         test_data  = get_examples(args, base_attrs, 'test')
 
         if args.setting == 'unsupervised':
@@ -94,7 +94,23 @@ class DataManager:
             self.logger.info("Number of unlabeled training samples = %s", str(len(self.train_unlabeled_examples)))
 
             # self.eval_examples = get_examples(args, base_attrs, 'dev')
-            self.eval_examples = dev_data
+            print(args.merge_dev)
+            if args.merge_dev:
+                self.logger.info('【半监督】进入了合并训练集和验证集的设定中, 加载数据集')
+                (self.eval_examples,
+                self.eval_labeled_examples,
+                self.eval_unlabeled_examples) = dev_data
+                
+                # NOTE 把train和dev所有数据合并
+                self.train_examples += self.eval_examples
+                self.train_labeled_examples += self.eval_labeled_examples
+                self.train_unlabeled_examples += self.eval_unlabeled_examples
+                self.logger.info("Number of merged labeled training samples = %s", str(len(self.train_labeled_examples)))
+                self.logger.info("Number of merged unlabeled training samples = %s", str(len(self.train_unlabeled_examples)))
+                
+            else:
+                self.logger.info('【半监督】进入了不合并训练集和验证集的设定中, 加载数据集')
+                self.eval_examples = dev_data
 
             self.logger.info("Number of evaluation samples = %s", str(len(self.eval_examples)))
             # self.test_examples = get_examples(args, base_attrs, 'test')
@@ -120,9 +136,12 @@ class DataManager:
                 args
             )
             # # 3) 构建 eval_dataloader / test_dataloader
-            self.eval_dataloader = get_data(
-                self.eval_examples, args, self.known_label_list, self.logger, 'dev'
-            ) 
+            if args.merge_dev:
+                self.eval_dataloader = None
+            else:
+                self.eval_dataloader = get_data(
+                    self.eval_examples, args, self.all_label_list, self.logger, 'dev'
+                ) 
             self.test_dataloader = get_data(
                 self.test_examples, args, self.all_label_list, self.logger, 'test'
             )
@@ -154,8 +173,8 @@ def get_data(examples, args, label_list, logger, mode):
     
     data_path = os.path.join(args.data_path, args.dataset)
     
-    logger.info('data preparation...')
-    
+    logger.info(f'data preparation...{mode}')
+
     label_ids = get_ids_annotations(args, examples,label_list,mode)
         
     text_data = get_t_data(args, examples)
@@ -285,7 +304,7 @@ def get_ids_annotations(args, examples,label_list,mode):
         label_ids = []
         for i, label in enumerate(label_list): # NOTE 映射
             label_map[label] = i
-
+        print(label_map)
         for example in examples:
             label_id = label_map[example.label] # NOTE 具体准换样本的标签
             label_ids.append(label_id)

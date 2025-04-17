@@ -3,6 +3,7 @@ from .unsupervised.MCN.manager import MCNManager
 from .unsupervised.CC.manager import CCManager
 from .unsupervised.SCCL.manager import SCCLManager
 from .unsupervised.UMC.manager import UMCManager
+from .unsupervised.UMC2.manager import UMC2Manager
 
 from .semi_supervised.testmethod.manager import TestManager
 from .semi_supervised.SMC.manager import SMCManager
@@ -14,7 +15,9 @@ method_map = {
     'cc': CCManager,
     'sccl': SCCLManager,
     'umc': UMCManager,
-    'smc': SMCManager,
+    'umc2': UMC2Manager,
     # 半监督
     'testmethod':TestManager,
+    'smc': SMCManager,
+
 }

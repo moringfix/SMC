@@ -1,0 +1,185 @@
+2025-04-17 20:48:10,181 - 【无监督】进入了无监督的设定中, 加载数据集
+2025-04-17 20:48:10,181 - data preparation...train
+2025-04-17 20:48:19,030 - Number of train samples = 1779
+2025-04-17 20:48:19,031 - Number of testing samples = 445
+2025-04-17 20:48:19,031 - data preparation...test
+2025-04-17 20:48:21,354 - num_train_examples = 1779
+2025-04-17 20:48:21,355 - ============================== Params ==============================
+2025-04-17 20:48:21,355 - logger_name: umc2_umc2_bert-base-uncased_MIntRec_1
+2025-04-17 20:48:21,355 - dataset: MIntRec
+2025-04-17 20:48:21,355 - multimodal_method: umc2
+2025-04-17 20:48:21,355 - method: umc2
+2025-04-17 20:48:21,355 - setting: unsupervised
+2025-04-17 20:48:21,355 - merge_dev: False
+2025-04-17 20:48:21,355 - text_backbone: bert-base-uncased
+2025-04-17 20:48:21,355 - seed: 1
+2025-04-17 20:48:21,355 - num_workers: 16
+2025-04-17 20:48:21,355 - log_id: umc2_umc2_bert-base-uncased_MIntRec_1_2025-04-17-20-48-10
+2025-04-17 20:48:21,355 - gpu_id: 1
+2025-04-17 20:48:21,355 - data_path: /root/autodl-tmp/home/Share/Dataset/LZH
+2025-04-17 20:48:21,356 - train: True
+2025-04-17 20:48:21,356 - tune: True
+2025-04-17 20:48:21,356 - save_model: True
+2025-04-17 20:48:21,356 - save_results: True
+2025-04-17 20:48:21,356 - log_path: logs
+2025-04-17 20:48:21,356 - cache_path: cache
+2025-04-17 20:48:21,356 - video_data_path: video_data
+2025-04-17 20:48:21,356 - audio_data_path: audio_data
+2025-04-17 20:48:21,356 - video_feats_path: swin_feats.pkl
+2025-04-17 20:48:21,356 - audio_feats_path: wavlm_feats.pkl
+2025-04-17 20:48:21,356 - results_path: results
+2025-04-17 20:48:21,356 - output_path: /root/autodl-tmp/home/lizhuohang/reaserch/EMNLP/SMC/outputs_test2/MIntRec
+2025-04-17 20:48:21,356 - model_path: models
+2025-04-17 20:48:21,356 - config_file_name: umc2_MIntRec
+2025-04-17 20:48:21,356 - results_file_name: results_umc2_pre.csv
+2025-04-17 20:48:21,356 - text_pretrained_model: uncased_L-12_H-768_A-12
+2025-04-17 20:48:21,356 - pretrained_bert_model: uncased_L-12_H-768_A-12
+2025-04-17 20:48:21,356 - pretrain_batch_size: 128
+2025-04-17 20:48:21,356 - train_batch_size: 128
+2025-04-17 20:48:21,356 - eval_batch_size: 128
+2025-04-17 20:48:21,356 - test_batch_size: 128
+2025-04-17 20:48:21,356 - num_pretrain_epochs: 100
+2025-04-17 20:48:21,356 - num_train_epochs: 100
+2025-04-17 20:48:21,356 - pretrain: [True]
+2025-04-17 20:48:21,356 - aligned_method: ctc
+2025-04-17 20:48:21,356 - need_aligned: False
+2025-04-17 20:48:21,356 - freeze_pretrain_bert_parameters: [True]
+2025-04-17 20:48:21,356 - freeze_train_bert_parameters: [True]
+2025-04-17 20:48:21,356 - pretrain_temperature: [0.1]
+2025-04-17 20:48:21,357 - train_temperature_sup: [0.5]
+2025-04-17 20:48:21,357 - train_temperature_unsup: [2]
+2025-04-17 20:48:21,357 - activation: tanh
+2025-04-17 20:48:21,357 - lr_pre: [1e-05]
+2025-04-17 20:48:21,357 - lr: [5e-05]
+2025-04-17 20:48:21,357 - delta: [0.05]
+2025-04-17 20:48:21,357 - thres: [0.1]
+2025-04-17 20:48:21,357 - topk: [5]
+2025-04-17 20:48:21,357 - weight_decay: 0.01
+2025-04-17 20:48:21,357 - feat_dim: 768
+2025-04-17 20:48:21,357 - hidden_size: 768
+2025-04-17 20:48:21,357 - grad_clip: -1.0
+2025-04-17 20:48:21,357 - warmup_proportion: [0.1]
+2025-04-17 20:48:21,357 - hidden_dropout_prob: 0.1
+2025-04-17 20:48:21,357 - weight: 1.0
+2025-04-17 20:48:21,357 - loss_mode: rdrop
+2025-04-17 20:48:21,357 - base_dim: 256
+2025-04-17 20:48:21,357 - nheads: 8
+2025-04-17 20:48:21,357 - attn_dropout: 0.1
+2025-04-17 20:48:21,357 - relu_dropout: 0.1
+2025-04-17 20:48:21,357 - embed_dropout: 0.01
+2025-04-17 20:48:21,357 - res_dropout: 0.0
+2025-04-17 20:48:21,357 - attn_mask: True
+2025-04-17 20:48:21,357 - encoder_layers_1: 1
+2025-04-17 20:48:21,357 - fusion_act: tanh
+2025-04-17 20:48:21,357 - pred_output_path: /root/autodl-tmp/home/lizhuohang/reaserch/EMNLP/SMC/outputs_test2/MIntRec/umc2_umc2_MIntRec_bert-base-uncased_1
+2025-04-17 20:48:21,357 - model_output_path: /root/autodl-tmp/home/lizhuohang/reaserch/EMNLP/SMC/outputs_test2/MIntRec/umc2_umc2_MIntRec_bert-base-uncased_1/models
+2025-04-17 20:48:21,357 - text_seq_len: 30
+2025-04-17 20:48:21,357 - video_seq_len: 230
+2025-04-17 20:48:21,358 - audio_seq_len: 480
+2025-04-17 20:48:21,358 - text_feat_dim: 768
+2025-04-17 20:48:21,358 - video_feat_dim: 1024
+2025-04-17 20:48:21,358 - audio_feat_dim: 768
+2025-04-17 20:48:21,358 - num_labels: 20
+2025-04-17 20:48:21,358 - num_train_examples: 1779
+2025-04-17 20:48:21,358 - ============================== End Params ==============================
+2025-04-17 20:48:22,620 - Freeze all parameters but the last layer for efficiency
+2025-04-17 20:48:22,653 - Pre-training start...
+2025-04-17 20:48:42,504 - ***** Epoch: 1: Eval results *****
+2025-04-17 20:48:42,504 -   train_loss = 5.963926008769444
+2025-04-17 20:48:42,504 - Epoch 1 | train_loss = 5.963926
+2025-04-17 20:49:03,962 - ***** Epoch: 2: Eval results *****
+2025-04-17 20:49:03,962 -   train_loss = 5.951321056910923
+2025-04-17 20:49:03,962 - Epoch 2 | train_loss = 5.951321
+2025-04-17 20:49:25,634 - ***** Epoch: 3: Eval results *****
+2025-04-17 20:49:25,634 -   train_loss = 5.906114033290318
+2025-04-17 20:49:25,634 - Epoch 3 | train_loss = 5.906114
+2025-04-17 20:49:48,166 - ***** Epoch: 4: Eval results *****
+2025-04-17 20:49:48,167 -   train_loss = 5.863367080688477
+2025-04-17 20:49:48,167 - Epoch 4 | train_loss = 5.863367
+2025-04-17 20:50:09,445 - ***** Epoch: 5: Eval results *****
+2025-04-17 20:50:09,445 -   train_loss = 5.765013217926025
+2025-04-17 20:50:09,445 - Epoch 5 | train_loss = 5.765013
+2025-04-17 20:50:31,935 - ***** Epoch: 6: Eval results *****
+2025-04-17 20:50:31,936 -   train_loss = 5.479321002960205
+2025-04-17 20:50:31,936 - Epoch 6 | train_loss = 5.479321
+2025-04-17 20:50:53,972 - ***** Epoch: 7: Eval results *****
+2025-04-17 20:50:53,972 -   train_loss = 4.885138511657715
+2025-04-17 20:50:53,972 - Epoch 7 | train_loss = 4.885139
+2025-04-17 20:51:16,693 - ***** Epoch: 8: Eval results *****
+2025-04-17 20:51:16,694 -   train_loss = 4.2584311962127686
+2025-04-17 20:51:16,694 - Epoch 8 | train_loss = 4.258431
+2025-04-17 20:51:37,394 - ***** Epoch: 9: Eval results *****
+2025-04-17 20:51:37,395 -   train_loss = 3.7782069614955356
+2025-04-17 20:51:37,395 - Epoch 9 | train_loss = 3.778207
+2025-04-17 20:51:59,567 - ***** Epoch: 10: Eval results *****
+2025-04-17 20:51:59,568 -   train_loss = 3.3358351843697682
+2025-04-17 20:51:59,568 - Epoch 10 | train_loss = 3.335835
+2025-04-17 20:52:21,884 - ***** Epoch: 11: Eval results *****
+2025-04-17 20:52:21,884 -   train_loss = 2.9847960642405917
+2025-04-17 20:52:21,884 - Epoch 11 | train_loss = 2.984796
+2025-04-17 20:52:43,729 - ***** Epoch: 12: Eval results *****
+2025-04-17 20:52:43,730 -   train_loss = 2.7271019220352173
+2025-04-17 20:52:43,730 - Epoch 12 | train_loss = 2.727102
+2025-04-17 20:53:05,996 - ***** Epoch: 13: Eval results *****
+2025-04-17 20:53:05,996 -   train_loss = 2.542894857270377
+2025-04-17 20:53:05,996 - Epoch 13 | train_loss = 2.542895
+2025-04-17 20:53:25,930 - ***** Epoch: 14: Eval results *****
+2025-04-17 20:53:25,931 -   train_loss = 2.426689028739929
+2025-04-17 20:53:25,931 - Epoch 14 | train_loss = 2.426689
+2025-04-17 20:53:44,954 - ***** Epoch: 15: Eval results *****
+2025-04-17 20:53:44,954 -   train_loss = 2.3083230767931258
+2025-04-17 20:53:44,954 - Epoch 15 | train_loss = 2.308323
+2025-04-17 20:54:05,742 - ***** Epoch: 16: Eval results *****
+2025-04-17 20:54:05,742 -   train_loss = 2.1936586584363664
+2025-04-17 20:54:05,742 - Epoch 16 | train_loss = 2.193659
+2025-04-17 20:54:26,817 - ***** Epoch: 17: Eval results *****
+2025-04-17 20:54:26,817 -   train_loss = 2.1401534932000295
+2025-04-17 20:54:26,817 - Epoch 17 | train_loss = 2.140153
+2025-04-17 20:54:48,617 - ***** Epoch: 18: Eval results *****
+2025-04-17 20:54:48,617 -   train_loss = 2.066214144229889
+2025-04-17 20:54:48,617 - Epoch 18 | train_loss = 2.066214
+2025-04-17 20:55:10,716 - ***** Epoch: 19: Eval results *****
+2025-04-17 20:55:10,717 -   train_loss = 1.9943547333989824
+2025-04-17 20:55:10,717 - Epoch 19 | train_loss = 1.994355
+2025-04-17 20:55:33,815 - ***** Epoch: 20: Eval results *****
+2025-04-17 20:55:33,815 -   train_loss = 1.957325518131256
+2025-04-17 20:55:33,816 - Epoch 20 | train_loss = 1.957326
+2025-04-17 20:55:56,438 - ***** Epoch: 21: Eval results *****
+2025-04-17 20:55:56,438 -   train_loss = 1.8878813641411918
+2025-04-17 20:55:56,439 - Epoch 21 | train_loss = 1.887881
+2025-04-17 20:56:18,080 - ***** Epoch: 22: Eval results *****
+2025-04-17 20:56:18,080 -   train_loss = 1.8385422314916338
+2025-04-17 20:56:18,080 - Epoch 22 | train_loss = 1.838542
+2025-04-17 20:56:39,385 - ***** Epoch: 23: Eval results *****
+2025-04-17 20:56:39,385 -   train_loss = 1.7927682740347726
+2025-04-17 20:56:39,385 - Epoch 23 | train_loss = 1.792768
+2025-04-17 20:56:59,341 - ***** Epoch: 24: Eval results *****
+2025-04-17 20:56:59,341 -   train_loss = 1.7482158882277352
+2025-04-17 20:56:59,341 - Epoch 24 | train_loss = 1.748216
+2025-04-17 20:57:19,825 - ***** Epoch: 25: Eval results *****
+2025-04-17 20:57:19,825 -   train_loss = 1.7363254938806807
+2025-04-17 20:57:19,825 - Epoch 25 | train_loss = 1.736325
+2025-04-17 20:57:39,026 - ***** Epoch: 26: Eval results *****
+2025-04-17 20:57:39,026 -   train_loss = 1.7006313460213798
+2025-04-17 20:57:39,026 - Epoch 26 | train_loss = 1.700631
+2025-04-17 20:57:59,563 - ***** Epoch: 27: Eval results *****
+2025-04-17 20:57:59,564 -   train_loss = 1.6549166185515267
+2025-04-17 20:57:59,564 - Epoch 27 | train_loss = 1.654917
+2025-04-17 20:58:24,805 - ***** Epoch: 28: Eval results *****
+2025-04-17 20:58:24,805 -   train_loss = 1.6221553512981959
+2025-04-17 20:58:24,805 - Epoch 28 | train_loss = 1.622155
+2025-04-17 20:58:47,337 - ***** Epoch: 29: Eval results *****
+2025-04-17 20:58:47,337 -   train_loss = 1.5969817638397217
+2025-04-17 20:58:47,337 - Epoch 29 | train_loss = 1.596982
+2025-04-17 20:59:09,038 - ***** Epoch: 30: Eval results *****
+2025-04-17 20:59:09,038 -   train_loss = 1.5880304319517953
+2025-04-17 20:59:09,038 - Epoch 30 | train_loss = 1.588030
+2025-04-17 20:59:29,678 - ***** Epoch: 31: Eval results *****
+2025-04-17 20:59:29,678 -   train_loss = 1.5621460846492223
+2025-04-17 20:59:29,678 - Epoch 31 | train_loss = 1.562146
+2025-04-17 20:59:50,719 - ***** Epoch: 32: Eval results *****
+2025-04-17 20:59:50,719 -   train_loss = 1.5473006197384425
+2025-04-17 20:59:50,720 - Epoch 32 | train_loss = 1.547301
+2025-04-17 21:00:10,551 - ***** Epoch: 33: Eval results *****
+2025-04-17 21:00:10,552 -   train_loss = 1.5223674092973982
+2025-04-17 21:00:10,552 - Epoch 33 | train_loss = 1.522367

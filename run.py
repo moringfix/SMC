@@ -26,7 +26,7 @@ def parse_arguments():
 
     parser.add_argument('--setting', type=str, default='unsupervised', help="Distinguish between semi-supervised and unsupervised.") # 新加部分
     
-    parser.add_argument('--merge_dev', type=bool, default=False, help="Whether to merge the dev part of data into train.") # 新加部分
+    parser.add_argument('--merge_dev', action='store_true', help="Whether to merge the dev part of data into train.") # 新加部分
 
     parser.add_argument("--text_backbone", type=str, default='bert', help="which backbone to use for text modality")
 
@@ -173,7 +173,7 @@ if __name__ == '__main__':
     for k in args.keys():
         logger.info(f"{k}: {args[k]}")
     logger.info("="*30+" End Params "+"="*30)
-    
+    print("##########################################",args.merge_dev)
     run(args, data, logger)
     
 
